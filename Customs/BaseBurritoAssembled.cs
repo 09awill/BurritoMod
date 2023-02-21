@@ -97,10 +97,11 @@ namespace BurritoMod.Customs
     }
     public class BaseBurritoAssembledItemGroupView : ItemGroupView
     {
-        internal void Setup(GameObject prefab) =>
+        internal void Setup(GameObject prefab)
+        {
             // This tells which sub-object of the prefab corresponds to each component of the ItemGroup
             // All of these sub-objects are hidden unless the item is present
-            
+
             ComponentGroups = new()
             {
                 new()
@@ -119,6 +120,29 @@ namespace BurritoMod.Customs
                     Item = Mod.CookedRice
                 }
             };
-            
+            ComponentLabels = new()
+            {
+                new()
+                {
+                    Text = "Chi",
+                    Item = Mod.ShreddedChicken
+                },
+                new()
+                {
+                    Text = "T",
+                    Item = Mod.Tortilla
+                },
+                new()
+                {
+                    Text = "R",
+                    Item = Mod.CookedRice
+                }
+            };
+        }
+
+
+
+
+
     }
 }

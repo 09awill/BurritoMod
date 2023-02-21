@@ -21,7 +21,7 @@ namespace BurritoMod.Customs
         public override GameObject IconPrefab => DisplayPrefab;
         public override DishCustomerChange CustomerMultiplier => DishCustomerChange.LargeDecrease;
         public override CardType CardType => CardType.Default;
-        public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Medium;
+        public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Large;
         public override UnlockGroup UnlockGroup => UnlockGroup.Dish;
         public override bool IsSpecificFranchiseTier => false;
         public override bool DestroyAfterModUninstall => false;
@@ -32,12 +32,13 @@ namespace BurritoMod.Customs
             Mod.BurritoDish
         };
 
-        public override HashSet<Dish.IngredientUnlock> IngredientsUnlocks => new HashSet<Dish.IngredientUnlock>
+        public override List<Dish.MenuItem> ResultingMenuItems => new List<Dish.MenuItem>
         {
-            new Dish.IngredientUnlock
+            new Dish.MenuItem
             {
-                Ingredient = Mod.ChoppedLettuce,
-                MenuItem = Mod.BaseBurritoAssembled
+                Item = Mod.BurritoWithExtrasFoilWrapped,
+                Phase = MenuPhase.Main,
+                Weight = 1
             }
         };
         public override HashSet<Item> MinimumIngredients => new HashSet<Item>
@@ -53,7 +54,8 @@ namespace BurritoMod.Customs
         {
             Mod.Cook,
             Mod.Chop,
-            Mod.Knead
+            Mod.Knead,
+            Mod.WrapInFoil
         };
         //Locale.English, "Combine chopped lettuce and tomato with the unwrapped base burrito, Interact to wrap and then toast and wrap in foil"
         public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string>
