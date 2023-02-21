@@ -4,52 +4,48 @@ using KitchenBurritoMod;
 using KitchenData;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
-using ModdedKitchen.Dishes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Unity.Entities;
 using UnityEngine;
 
 namespace BurritoMod.Customs
 {
-    class BurritoDish : ModDish
+    internal class BurritoWithExtrasCard : CustomDish
     {
-        public override string UniqueNameID => "Burrito Dish";
-        public override DishType Type => DishType.Base;
+        public override string UniqueNameID => "BurritoWithExtrasCard";
+        public override DishType Type => DishType.Main;
         public override GameObject DisplayPrefab => Mod.Bundle.LoadAsset<GameObject>("TortillaWrappedIcon");
         public override GameObject IconPrefab => DisplayPrefab;
         public override DishCustomerChange CustomerMultiplier => DishCustomerChange.LargeDecrease;
         public override CardType CardType => CardType.Default;
-        public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Large;
+        public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Medium;
         public override UnlockGroup UnlockGroup => UnlockGroup.Dish;
         public override bool IsSpecificFranchiseTier => false;
-        public override bool IsAvailableAsLobbyOption => true;
         public override bool DestroyAfterModUninstall => false;
         public override bool IsUnlockable => true;
 
-
-        public override List<string> StartingNameSet => new List<string>
+        public override List<Unlock> HardcodedRequirements => new()
         {
-            "Burrito Bandito",
-            "Pico this peen",
-            "JasonMakesBurritos"
+            Mod.BurritoDish
         };
-        public override List<Dish.MenuItem> ResultingMenuItems => new List<Dish.MenuItem>
+
+        public override HashSet<Dish.IngredientUnlock> IngredientsUnlocks => new HashSet<Dish.IngredientUnlock>
         {
-            new Dish.MenuItem
+            new Dish.IngredientUnlock
             {
-                Item = Mod.BurritoFoilWrapped,
-                Phase = MenuPhase.Main,
-                Weight = 1
+                Ingredient = Mod.ChoppedLettuce,
+                MenuItem = Mod.BaseBurritoAssembled
             }
         };
         public override HashSet<Item> MinimumIngredients => new HashSet<Item>
         {
             Mod.Wok,
             Mod.Tortilla,
+            Mod.Lettuce,
+            Mod.Tomato,
             Mod.Rice,
             Mod.Chicken
         };
@@ -57,17 +53,16 @@ namespace BurritoMod.Customs
         {
             Mod.Cook,
             Mod.Chop,
-            Mod.Knead,
-            Mod.WrapInFoil
+            Mod.Knead
         };
-
+        //Locale.English, "Combine chopped lettuce and tomato with the unwrapped base burrito, Interact to wrap and then toast and wrap in foil"
         public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string>
         {
-            { Locale.English, "Cook Chicken and shred, combine with tortilla, Cook rice and add to tortilla, Interact to wrap and then toast and wrap in foil" }
+            { Locale.English, "Combine chopped lettuce and tomato with the unwrapped base burrito, Interact to wrap and then toast and wrap in foil" }
         };
-        public override IDictionary<Locale, UnlockInfo> LocalisedInfo => new Dictionary<Locale, UnlockInfo>
+        public override List<(Locale, UnlockInfo)> InfoList => new()
         {
-            { Locale.English, LocalisationUtils.CreateUnlockInfo("Burrito", "Adds Burrito as a Main", "Just for memes.") }
+            ( Locale.English, LocalisationUtils.CreateUnlockInfo("Burrito with salad", "You have to add chopped lettuce and tomato to the burrito", "Gotta be healthy") )
         };
 
         public override void OnRegister(GameDataObject gameDataObject)

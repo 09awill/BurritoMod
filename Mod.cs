@@ -40,12 +40,10 @@ namespace KitchenBurritoMod
         // Vanilla Processes
         internal static Process Cook => GetExistingGDO<Process>(ProcessReferences.Cook);
         internal static Process Chop => GetExistingGDO<Process>(ProcessReferences.Chop);
+        internal static Process Knead => GetExistingGDO<Process>(ProcessReferences.Knead);
 
         // Vanilla Items
         internal static Item Burnt => GetExistingGDO<Item>(ItemReferences.BurnedFood);
-        internal static Item Meat => GetExistingGDO<Item>(ItemReferences.Meat);
-        internal static Item ChoppedMeat => GetExistingGDO<Item>(ItemReferences.MeatChopped);
-        internal static Item ChoppedMeatCooked => GetExistingGDO<Item>(ItemReferences.MeatChoppedContainerCooked);
         internal static Item Tomato => GetExistingGDO<Item>(ItemReferences.Tomato);
         internal static Item ChoppedTomato => GetExistingGDO<Item>(ItemReferences.TomatoChopped);
         internal static Item Lettuce => GetExistingGDO<Item>(ItemReferences.Lettuce);
@@ -57,12 +55,33 @@ namespace KitchenBurritoMod
         internal static Item DirtyPlate => Find<Item>(ItemReferences.PlateDirty);
 
         // Modded Items
-        internal static Item Burrito => GetModdedGDO<Item, Burrito>();
+        internal static Item Chicken => Find<Item>(IngredientLib.References.GetIngredient("Chicken"));
+
+        internal static Item CookedChicken => Find<Item>(IngredientLib.References.GetIngredient("Cooked Chicken"));
+        internal static Item ShreddedChicken => Find<Item>(IngredientLib.References.GetIngredient("Shredded Chicken"));
+
+        internal static ItemGroup BaseBurritoAssembled => GetModdedGDO<ItemGroup, BaseBurritoAssembled>();
+        internal static ItemGroup BurritoWithExtrasAssembled => GetModdedGDO<ItemGroup, BurritoWithExtrasAssembled>();
+        internal static Item BurritoWithExtrasWrapped => GetModdedGDO<Item, BurritoWithExtrasWrapped>();
+        internal static Item BurritoWithExtrasCooked => GetModdedGDO<Item, BurritoWithExtrasCooked>();
+        internal static Item BurritoFoilWrapped => GetModdedGDO<Item, BurritoFoilWrapped>();
+        internal static Item BurritoWithExtrasFoilWrapped => GetModdedGDO<Item, BurritoWithExtrasFoilWrapped>();
         internal static Item Tortilla => GetModdedGDO<Item, Tortilla>();
 
+        internal static Item BurritoWrapped => GetModdedGDO<Item, BurritoWrapped>();
+        internal static Item BurritoCooked => GetModdedGDO<Item, BurritoCooked>();
 
         // Modded Dishes
         internal static Dish BurritoDish => GetModdedGDO<Dish, BurritoDish>();
+
+        internal static Dish BurritoWithExtrasCard => GetModdedGDO<Dish, BurritoWithExtrasCard>();
+
+        // Modded Appliances 
+        internal static Appliance FoilProvider => GetModdedGDO < Appliance, FoilProvider>();
+        internal static Appliance TortillaProvider => GetModdedGDO<Appliance, TortillaProvider>();
+
+        //Processes
+        public static Process WrapInFoil => GetModdedGDO<Process, WrapInFoil>();
 
 
         public Mod() : base(MOD_GUID, MOD_NAME, MOD_AUTHOR, MOD_VERSION, MOD_GAMEVERSION, Assembly.GetExecutingAssembly()) { }
@@ -78,11 +97,21 @@ namespace KitchenBurritoMod
 
             // Dishes
             AddGameDataObject<BurritoDish>();
-
             // Items
-            AddGameDataObject<Burrito>();
+            AddGameDataObject<BurritoFoilWrapped>();
+            AddGameDataObject<BurritoWithExtrasAssembled>();
+            AddGameDataObject<BurritoWithExtrasCard>();
+            AddGameDataObject<BurritoWithExtrasCooked>();
+            AddGameDataObject<BurritoWithExtrasFoilWrapped>();
+            AddGameDataObject<BurritoWithExtrasWrapped>();
+            AddGameDataObject<BurritoCooked>();
+            AddGameDataObject<BurritoWrapped>();
+            AddGameDataObject<BaseBurritoAssembled>();
             AddGameDataObject<Tortilla>();
 
+            AddGameDataObject<TortillaProvider>();
+            AddGameDataObject<FoilProvider>();
+            AddGameDataObject<WrapInFoil>();
             LogInfo("Done loading game data.");
         }
 
