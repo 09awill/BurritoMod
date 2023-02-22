@@ -1,14 +1,8 @@
 ﻿using IngredientLib.Util;
-using KitchenAmericanBreakfast.Utils;
 using KitchenBurritoMod;
 using KitchenData;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace BurritoMod.Customs
@@ -20,12 +14,20 @@ namespace BurritoMod.Customs
         public override ItemCategory ItemCategory => ItemCategory.Generic;
         public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
         public override ItemValue ItemValue => ItemValue.Medium;
+        public override Appliance DedicatedProvider => Mod.TortillaProvider;
 
 
         public override void OnRegister(GameDataObject gameDataObject)
         {
-            Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Rice") };
-            Prefab.GetChild("TortillaBase").GetChild("Tortilla").ApplyMaterial(mats);
+            GameObject Tortilla = Prefab.GetChildFromPath("Tortilla.002");
+            Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Bread - Inside") };
+            Tortilla.GetChild("Wrap").ApplyMaterial(mats);
+
+            Debug.Log("Wrap");
+
+
+            mats = new Material[] { MaterialUtils.GetExistingMaterial("Well-done  Burger") };
+            Tortilla.GetChild("Wrap").GetChild("Tortilla_Charred").ApplyMaterial(mats);
         }
 
     }

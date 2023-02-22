@@ -1,16 +1,10 @@
-﻿using IngredientLib.Util;
-using KitchenAmericanBreakfast.Utils;
+﻿using BurritoMod.Registry;
+using IngredientLib.Util;
 using KitchenBurritoMod;
 using KitchenData;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
-using ModdedKitchen.Dishes;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Unity.Entities;
 using UnityEngine;
 
 namespace BurritoMod.Customs
@@ -19,7 +13,7 @@ namespace BurritoMod.Customs
     {
         public override string UniqueNameID => "Burrito Dish";
         public override DishType Type => DishType.Base;
-        public override GameObject DisplayPrefab => Mod.Bundle.LoadAsset<GameObject>("BurritoIcon");
+        public override GameObject DisplayPrefab => Mod.Bundle.LoadAsset<GameObject>("TortillaWrappedIcon");
         public override GameObject IconPrefab => DisplayPrefab;
         public override DishCustomerChange CustomerMultiplier => DishCustomerChange.LargeDecrease;
         public override CardType CardType => CardType.Default;
@@ -30,17 +24,25 @@ namespace BurritoMod.Customs
         public override bool DestroyAfterModUninstall => false;
         public override bool IsUnlockable => true;
 
+
         public override List<string> StartingNameSet => new List<string>
         {
-            "Burrito Bandito",
-            "Pico this peen",
-            "JasonMakesBurritos"
+            "Hurricane Tortilla",
+            "It's a wrap!",
+            "Chick-o-Bell",
+            "Un-Burrito-Ble!",
+            "Neato Burrito",
+            "Boo-Rito",
+            "Gangster Wrap",
+            "Epic Wrap Battle",
+            "Danny Burrito",
+            "Let's get shredded!"
         };
         public override List<Dish.MenuItem> ResultingMenuItems => new List<Dish.MenuItem>
         {
             new Dish.MenuItem
             {
-                Item = Mod.Burrito,
+                Item = Mod.BurritoFoilWrapped,
                 Phase = MenuPhase.Main,
                 Weight = 1
             }
@@ -49,19 +51,20 @@ namespace BurritoMod.Customs
         {
             Mod.Wok,
             Mod.Tortilla,
-            Mod.Lettuce,
-            Mod.Tomato,
-            Mod.Rice
+            Mod.Rice,
+            Mod.Chicken
         };
         public override HashSet<Process> RequiredProcesses => new HashSet<Process>
         {
             Mod.Cook,
-            Mod.Chop
+            Mod.Chop,
+            Mod.Knead,
+            Mod.WrapInFoil
         };
 
         public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string>
         {
-            { Locale.English, "Chop Lettuce, chop tomato, cook rice and combine with tortilla, optionally combine with cooked chopped meat. Cook and serve!" }
+            { Locale.English, "Cook Chicken and shred, combine with tortilla, Cook rice and add to tortilla, Interact to wrap and then toast and wrap in foil" }
         };
         public override IDictionary<Locale, UnlockInfo> LocalisedInfo => new Dictionary<Locale, UnlockInfo>
         {
@@ -70,31 +73,13 @@ namespace BurritoMod.Customs
 
         public override void OnRegister(GameDataObject gameDataObject)
         {
-            GameObject lettuce = DisplayPrefab.GetChild("Salad");
-            Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Lettuce") };
-            lettuce.GetChild("ChoppedLettuce").ApplyMaterial(mats);
+            Debug.Log("Foil Wrapped Burrito");
 
-            GameObject tomato = DisplayPrefab.GetChildFromPath("Tomato - Chopped/Tomato Sliced");
-            mats = new Material[] { MaterialUtils.GetExistingMaterial("Tomato Flesh") };
-            tomato.GetChild("ChoppedTomatoLiquid").ApplyMaterial(mats);
-
-            mats = new Material[] { MaterialUtils.GetExistingMaterial("Tomato Flesh 2") };
-            tomato.GetChild("ChoppedTomatoLiquid1").ApplyMaterial(mats);
-
-            mats = new Material[] { MaterialUtils.GetExistingMaterial("Tomato") };
-            tomato.GetChild("ChoppedTomatoSkin").ApplyMaterial(mats);
-
-            GameObject Meat = DisplayPrefab.GetChild("Meat - Chopped");
-            mats = new Material[] { MaterialUtils.GetExistingMaterial("Raw") };
-            Meat.GetChild("ChoppedMeatCooked").ApplyMaterial(mats);
-
-            GameObject Tortilla = DisplayPrefab.GetChild("TortillaBase");
-            mats = new Material[] { MaterialUtils.GetExistingMaterial("Rice") };
-            Tortilla.GetChild("Tortilla").ApplyMaterial(mats);
-
-            GameObject Rice = DisplayPrefab.GetChild("Rice");
-            mats = new Material[] { MaterialUtils.GetExistingMaterial("Rice") };
-            Rice.GetChild("CookedRice").ApplyMaterial(mats);
+            //TO DO: Change to chicken
+            GameObject FoilWrappedBurrito = DisplayPrefab.GetChild("FoilWrappedBurrito");
+            Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Metal- Shiny") };
+            FoilWrappedBurrito.ApplyMaterial(mats);
+            FoilWrappedBurrito.GetChild("FoilEnds").ApplyMaterial(mats);
         }
     }
 }
