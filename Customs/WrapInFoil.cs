@@ -22,6 +22,18 @@ namespace BurritoMod.Customs
         // Whether or not the process can be obfuscated, such as through the "Blindfolded Chefs" card. This is normally set to `true`
         public override bool CanObfuscateProgress => true;
 
+        // The localization information for this process. This must be set for at least one language. 
+        public override LocalisationObject<ProcessInfo> Info
+        {
+            get
+            {
+                var info = new LocalisationObject<ProcessInfo>();
+
+                info.Add(Locale.English, LocalisationUtils.CreateProcessInfo("Proof", "<sprite name=\"WrapSpriteTex\">"));
+
+                return info;
+            }
+        }
 
     }
 }

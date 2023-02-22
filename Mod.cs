@@ -126,7 +126,12 @@ namespace KitchenBurritoMod
 
             LogInfo("Attempting to load asset bundle...");
             Bundle = mod.GetPacks<AssetBundleModPack>().SelectMany(e => e.AssetBundles).First();
-
+            Bundle.LoadAllAssets<Texture2D>();
+            Bundle.LoadAllAssets<Sprite>();
+            var spriteAsset = Bundle.LoadAsset<TMP_SpriteAsset>("WrapSprite");
+            TMP_Settings.defaultSpriteAsset.fallbackSpriteAssets.Add(spriteAsset);
+            spriteAsset.material = Object.Instantiate(TMP_Settings.defaultSpriteAsset.material);
+            spriteAsset.material.mainTexture = Bundle.LoadAsset<Texture2D>("WrapSpriteTex");
             LogInfo("Done loading asset bundle.");
 
             // Register custom GDOs
