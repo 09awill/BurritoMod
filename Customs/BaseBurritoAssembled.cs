@@ -4,6 +4,7 @@ using KitchenAmericanBreakfast.Mains;
 using KitchenAmericanBreakfast.Utils;
 using KitchenBurritoMod;
 using KitchenData;
+using KitchenLib.Colorblind;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
 using System;
@@ -93,6 +94,13 @@ namespace BurritoMod.Customs
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Rice") };
             Rice.GetChild("Cube").ApplyMaterial(mats);
             Rice.GetChild("Cylinder.001").ApplyMaterial(mats);
+
+
+            if (Prefab.TryGetComponent<ItemGroupView>(out var itemGroupView))
+            {
+                GameObject clonedColourBlind = ColorblindUtils.cloneColourBlindObjectAndAddToItem(GameDataObject as ItemGroup);
+                ColorblindUtils.setColourBlindLabelObjectOnItemGroupView(itemGroupView, clonedColourBlind);
+            }
         }
     }
     public class BaseBurritoAssembledItemGroupView : ItemGroupView
