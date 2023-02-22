@@ -1,17 +1,11 @@
 ﻿using IngredientLib.Util;
 using Kitchen;
-using KitchenAmericanBreakfast.Mains;
-using KitchenAmericanBreakfast.Utils;
 using KitchenBurritoMod;
 using KitchenData;
 using KitchenLib.Colorblind;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using static KitchenData.ItemGroup;
 
@@ -23,7 +17,7 @@ namespace BurritoMod.Customs
         public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("TortillaAssembled");
         public override ItemCategory ItemCategory => ItemCategory.Generic;
         public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
-        public override ItemValue ItemValue => ItemValue.Medium;
+        public override ItemValue ItemValue => ItemValue.Large;
 
         public override List<Item.ItemProcess> Processes => new List<Item.ItemProcess>
         {

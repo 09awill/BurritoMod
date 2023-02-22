@@ -1,17 +1,10 @@
 ﻿using IngredientLib.Util;
 using Kitchen;
-using KitchenAmericanBreakfast.Utils;
 using KitchenBurritoMod;
 using KitchenData;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Unity.Entities;
 using UnityEngine;
 
 namespace BurritoMod.Customs
@@ -32,9 +25,11 @@ namespace BurritoMod.Customs
 
         public override List<IApplianceProperty> Properties => new()
         {
-            new CItemHolder()
+            KitchenPropertiesUtils.GetCItemProvider(Mod.Foil.ID, int.MaxValue, int.MaxValue, true, false, true, false, true, false, false)
         };
 
+
+        
 
         public override List<Appliance.ApplianceProcesses> Processes => new List<Appliance.ApplianceProcesses>()
         {
@@ -47,7 +42,6 @@ namespace BurritoMod.Customs
             }
             // ...
         };
-
 
         public override void OnRegister(GameDataObject gameDataObject)
         {

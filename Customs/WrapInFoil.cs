@@ -1,12 +1,8 @@
 ﻿using KitchenBurritoMod;
 using KitchenData;
 using KitchenLib.Customs;
+using KitchenLib.References;
 using KitchenLib.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BurritoMod.Customs
 {
@@ -22,6 +18,7 @@ namespace BurritoMod.Customs
         // Whether or not the process can be obfuscated, such as through the "Blindfolded Chefs" card. This is normally set to `true`
         public override bool CanObfuscateProgress => true;
 
+
         // The localization information for this process. This must be set for at least one language. 
         public override LocalisationObject<ProcessInfo> Info
         {
@@ -29,11 +26,11 @@ namespace BurritoMod.Customs
             {
                 var info = new LocalisationObject<ProcessInfo>();
 
-                info.Add(Locale.English, LocalisationUtils.CreateProcessInfo("Proof", "<sprite name=\"WrapSpriteTex\">"));
-
+                info.Add(Locale.English, LocalisationUtils.CreateProcessInfo("Proof", "<sprite name=\"Foil_Icon-01\">"));
                 return info;
             }
         }
+
 
     }
 }

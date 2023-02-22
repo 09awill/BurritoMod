@@ -1,16 +1,10 @@
-﻿using IngredientLib.Util;
-using KitchenAmericanBreakfast.Utils;
+﻿using BurritoMod.Registry;
+using IngredientLib.Util;
 using KitchenBurritoMod;
 using KitchenData;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
-using ModdedKitchen.Dishes;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Unity.Entities;
 using UnityEngine;
 
 namespace BurritoMod.Customs
@@ -33,9 +27,16 @@ namespace BurritoMod.Customs
 
         public override List<string> StartingNameSet => new List<string>
         {
-            "Burrito Bandito",
-            "Pico this peen",
-            "JasonMakesBurritos"
+            "Hurricane Tortilla",
+            "It's a wrap!",
+            "Chick-o-Bell",
+            "Un-Burrito-Ble!",
+            "Neato Burrito",
+            "Boo-Rito",
+            "Gangster Wrap",
+            "Epic Wrap Battle",
+            "Danny Burrito",
+            "Let's get shredded!"
         };
         public override List<Dish.MenuItem> ResultingMenuItems => new List<Dish.MenuItem>
         {
@@ -72,26 +73,13 @@ namespace BurritoMod.Customs
 
         public override void OnRegister(GameDataObject gameDataObject)
         {
-            Debug.Log("Base Burrito");
-
-            Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Bread - Inside") };
-            DisplayPrefab.GetChild("Burrito").ApplyMaterial(mats);
-
-            Debug.Log("Burrito Toasted");
-
-            mats = new Material[] { MaterialUtils.GetExistingMaterial("Well-done Burger") };
-            DisplayPrefab.GetChild("Burrito").ApplyMaterial(mats);
-
             Debug.Log("Foil Wrapped Burrito");
 
             //TO DO: Change to chicken
             GameObject FoilWrappedBurrito = DisplayPrefab.GetChild("FoilWrappedBurrito");
-            mats = new Material[] { MaterialUtils.GetExistingMaterial("Metal- Shiny") };
+            Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Metal- Shiny") };
             FoilWrappedBurrito.ApplyMaterial(mats);
-            FoilWrappedBurrito.GetChild("Burrito.002").ApplyMaterial(mats);
-            FoilWrappedBurrito.GetChild("Burrito.003").ApplyMaterial(mats);
-            FoilWrappedBurrito.GetChild("Burrito.004").ApplyMaterial(mats);
-            FoilWrappedBurrito.GetChild("Burrito.005").ApplyMaterial(mats);
+            FoilWrappedBurrito.GetChild("FoilEnds").ApplyMaterial(mats);
         }
     }
 }

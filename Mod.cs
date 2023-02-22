@@ -70,6 +70,7 @@ namespace KitchenBurritoMod
 
         internal static Item BurritoWrapped => GetModdedGDO<Item, BurritoWrapped>();
         internal static Item BurritoCooked => GetModdedGDO<Item, BurritoCooked>();
+        internal static Item Foil => GetModdedGDO<Item, Foil>();
 
         // Modded Dishes
         internal static Dish BurritoDish => GetModdedGDO<Dish, BurritoDish>();
@@ -77,7 +78,7 @@ namespace KitchenBurritoMod
         internal static Dish BurritoWithExtrasCard => GetModdedGDO<Dish, BurritoWithExtrasCard>();
 
         // Modded Appliances 
-        internal static Appliance FoilProvider => GetModdedGDO < Appliance, FoilProvider>();
+        internal static Appliance FoilProvider => GetModdedGDO<Appliance, FoilProvider>();
         internal static Appliance TortillaProvider => GetModdedGDO<Appliance, TortillaProvider>();
 
         //Processes
@@ -108,6 +109,7 @@ namespace KitchenBurritoMod
             AddGameDataObject<BurritoWrapped>();
             AddGameDataObject<BaseBurritoAssembled>();
             AddGameDataObject<Tortilla>();
+            AddGameDataObject<Foil>();
 
             AddGameDataObject<TortillaProvider>();
             AddGameDataObject<FoilProvider>();
@@ -128,14 +130,18 @@ namespace KitchenBurritoMod
             Bundle = mod.GetPacks<AssetBundleModPack>().SelectMany(e => e.AssetBundles).First();
             Bundle.LoadAllAssets<Texture2D>();
             Bundle.LoadAllAssets<Sprite>();
-            var spriteAsset = Bundle.LoadAsset<TMP_SpriteAsset>("WrapSprite");
+            Bundle.LoadAllAssets<AudioClip>();
+
+            var spriteAsset = Bundle.LoadAsset<TMP_SpriteAsset>("Foil_Icon-01");
             TMP_Settings.defaultSpriteAsset.fallbackSpriteAssets.Add(spriteAsset);
             spriteAsset.material = Object.Instantiate(TMP_Settings.defaultSpriteAsset.material);
-            spriteAsset.material.mainTexture = Bundle.LoadAsset<Texture2D>("WrapSpriteTex");
+            spriteAsset.material.mainTexture = Bundle.LoadAsset<Texture2D>("Foil_Icon-01Tex");
             LogInfo("Done loading asset bundle.");
 
             // Register custom GDOs
             AddGameData();
+
+            AudioUtils.AddProcessAudioClip(WrapInFoil.ID, AudioUtils.GetProcessAudioClip(GetExistingGDO<Process>(ProcessReferences.Cook).ID));
 
             // Perform actions when game data is built
             Events.BuildGameDataEvent += delegate (object s, BuildGameDataEventArgs args)

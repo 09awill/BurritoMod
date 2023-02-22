@@ -1,17 +1,11 @@
 ﻿using IngredientLib.Util;
 using Kitchen;
-using KitchenAmericanBreakfast.Mains;
-using KitchenAmericanBreakfast.Utils;
 using KitchenBurritoMod;
 using KitchenData;
 using KitchenLib.Colorblind;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using static KitchenData.ItemGroup;
 
@@ -23,7 +17,7 @@ namespace BurritoMod.Customs
         public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("TortillaWithExtrasAssembled");
         public override ItemCategory ItemCategory => ItemCategory.Generic;
         public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
-        public override ItemValue ItemValue => ItemValue.Medium;
+        public override ItemValue ItemValue => ItemValue.Large;
 
         public override List<Item.ItemProcess> Processes => new List<Item.ItemProcess>
         {
@@ -40,9 +34,28 @@ namespace BurritoMod.Customs
             {
                 Max = 1,
                 Min = 1,
+                IsMandatory = true,
                 Items = new List<Item>()
                 {
-                    Mod.BaseBurritoAssembled,
+                    Mod.Tortilla,
+                }
+            },
+            new ItemSet()
+            {
+                Max = 1,
+                Min = 1,
+                Items = new List<Item>()
+                {
+                    Mod.CookedRice,
+                }
+            },
+            new ItemSet()
+            {
+                Max = 1,
+                Min = 1,
+                Items = new List<Item>()
+                {
+                    Mod.ShreddedChicken
                 }
             },
             new ItemSet()
@@ -130,7 +143,6 @@ namespace BurritoMod.Customs
         {
             // This tells which sub-object of the prefab corresponds to each component of the ItemGroup
             // All of these sub-objects are hidden unless the item is present
-
             ComponentGroups = new()
             {
                 new()
@@ -187,6 +199,6 @@ namespace BurritoMod.Customs
                 }
             };
         }
-            
+
     }
 }

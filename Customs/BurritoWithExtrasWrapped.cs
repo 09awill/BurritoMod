@@ -1,17 +1,10 @@
-﻿using KitchenData;
+﻿using IngredientLib.Util;
+using KitchenBurritoMod;
+using KitchenData;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static KitchenData.ItemGroup;
 using UnityEngine;
-using KitchenBurritoMod;
-using Kitchen;
-using IngredientLib.Util;
-using KitchenAmericanBreakfast.Utils;
 
 namespace BurritoMod.Customs
 {
@@ -27,7 +20,7 @@ namespace BurritoMod.Customs
         {
             new Item.ItemProcess
             {
-                Duration = 3,
+                Duration = 1,
                 Process = Mod.Cook,
                 Result = Mod.BurritoWithExtrasCooked
             }
@@ -41,6 +34,8 @@ namespace BurritoMod.Customs
 
             Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Bread - Inside") };
             Prefab.GetChild("Burrito").ApplyMaterial(mats);
+            Prefab.GetChildFromPath("Burrito/Plane").ApplyMaterial(mats);
+            Prefab.GetChildFromPath("Burrito/Plane.001").ApplyMaterial(mats);
 
             Debug.Log("Foil Wrapped Burrito");
         }
