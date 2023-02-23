@@ -71,15 +71,21 @@ namespace KitchenBurritoMod
         internal static Item BurritoWrapped => GetModdedGDO<Item, BurritoWrapped>();
         internal static Item BurritoCooked => GetModdedGDO<Item, BurritoCooked>();
         internal static Item Foil => GetModdedGDO<Item, Foil>();
+        internal static Item BurritoBasket => GetModdedGDO<Item, BurritoBasket>();
+        internal static Item BurritoWithExtrasInaBasket => GetModdedGDO<Item, BurritoWithExtrasInaBasket>();
+        internal static Item BurritoInaBasket => GetModdedGDO<Item, BurritoInaBasket>();
 
         // Modded Dishes
         internal static Dish BurritoDish => GetModdedGDO<Dish, BurritoDish>();
 
         internal static Dish BurritoWithExtrasCard => GetModdedGDO<Dish, BurritoWithExtrasCard>();
+        internal static Dish BurritoInBasketCard => GetModdedGDO<Dish, BurritoInBasketCard>();
+        internal static Dish BurritoWithExtrasInBasketCard => GetModdedGDO<Dish, BurritoWithExtrasInBasketCard>();
 
         // Modded Appliances 
         internal static Appliance FoilProvider => GetModdedGDO<Appliance, FoilProvider>();
         internal static Appliance TortillaProvider => GetModdedGDO<Appliance, TortillaProvider>();
+        internal static Appliance BurritoBasketProvider => GetModdedGDO<Appliance, BurritoBasketProvider>();
 
         //Processes
         public static Process WrapInFoil => GetModdedGDO<Process, WrapInFoil>();
@@ -108,9 +114,15 @@ namespace KitchenBurritoMod
             AddGameDataObject<BurritoCooked>();
             AddGameDataObject<BurritoWrapped>();
             AddGameDataObject<BaseBurritoAssembled>();
+            AddGameDataObject<BurritoInaBasket>();
+            AddGameDataObject<BurritoWithExtrasInaBasket>();
+            AddGameDataObject<BurritoWithExtrasInBasketCard>();
+            AddGameDataObject<BurritoInBasketCard>();
+            AddGameDataObject<BurritoBasket>();
             AddGameDataObject<Tortilla>();
             AddGameDataObject<Foil>();
 
+            AddGameDataObject<BurritoBasketProvider>();
             AddGameDataObject<TortillaProvider>();
             AddGameDataObject<FoilProvider>();
             AddGameDataObject<WrapInFoil>();

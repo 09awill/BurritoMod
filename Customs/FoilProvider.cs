@@ -50,6 +50,7 @@ namespace BurritoMod.Customs
             var holdTransform = Prefab.GetChildFromPath("BaseCounter/HoldPoint").transform;
             var holdPoint = Prefab.AddComponent<HoldPointContainer>();
             holdPoint.HoldPoint = holdTransform;
+
         }
     }
 }

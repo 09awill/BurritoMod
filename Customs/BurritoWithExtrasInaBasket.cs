@@ -10,13 +10,14 @@ using static KitchenData.ItemGroup;
 
 namespace BurritoMod.Customs
 {
-    class BurritoWithExtrasFoilWrapped : CustomItemGroup<BurritoWithExtrasFoilWrappedItemGroupView>
+    class BurritoWithExtrasInaBasket : CustomItemGroup<BurritoWithExtrasInaBasketItemGroupView>
     {
-        public override string UniqueNameID => "Burrito With Extras Foil Wrapped";
-        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("TortillaWrappedIconWithExtras");
+        public override string UniqueNameID => "Burrito With Extras In A Basket";
+        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("BurritoWithExtrasInBasket");
         public override ItemCategory ItemCategory => ItemCategory.Generic;
         public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
         public override ItemValue ItemValue => ItemValue.Large;
+        public override bool CanContainSide => true;
 
 
         public override List<ItemSet> Sets => new List<ItemSet>()
@@ -27,7 +28,7 @@ namespace BurritoMod.Customs
                 Min = 1,
                 Items = new List<Item>()
                 {
-                    Mod.BurritoWithExtrasCooked,
+                    Mod.BurritoWithExtrasFoilWrapped
                 }
             },
             new ItemSet()
@@ -36,7 +37,7 @@ namespace BurritoMod.Customs
                 Min = 1,
                 Items = new List<Item>()
                 {
-                    Mod.Foil,
+                    Mod.BurritoBasket
                 }
             }
         };
@@ -46,23 +47,11 @@ namespace BurritoMod.Customs
         //Bread - Inside Cooked for Main Burrito
         public override void OnRegister(GameDataObject gameDataObject)
         {
-
-            Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Bread - Inside") };
-            Prefab.GetChild("Burrito").ApplyMaterial(mats);
-            Prefab.GetChildFromPath("Burrito/Plane").ApplyMaterial(mats);
-            Prefab.GetChildFromPath("Burrito/Plane.001").ApplyMaterial(mats);
-
-            Debug.Log("Burrito Toasted");
-
-            mats = new Material[] { MaterialUtils.GetExistingMaterial("Well-done  Burger") };
-            Prefab.GetChildFromPath("Burrito/BurritoToasted").ApplyMaterial(mats);
-
-
             Debug.Log("Foil Wrapped Burrito");
 
             //TO DO: Change to chicken
             GameObject FoilWrappedBurrito = Prefab.GetChild("FoilWrappedBurrito");
-            mats = new Material[] { MaterialUtils.GetExistingMaterial("Metal- Shiny") };
+            Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Metal- Shiny") };
             FoilWrappedBurrito.ApplyMaterial(mats);
             FoilWrappedBurrito.GetChild("FoilEnds").ApplyMaterial(mats);
 
@@ -71,10 +60,15 @@ namespace BurritoMod.Customs
 
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Tomato") };
             FoilWrappedBurrito.GetChild("StickerTomato").ApplyMaterial(mats);
+
+            mats = new Material[] { MaterialUtils.GetExistingMaterial("Tomato") };
+            Prefab.GetChild("BurritoBasket").ApplyMaterial(mats);
+            mats = new Material[] { MaterialUtils.GetExistingMaterial("Rice") };
+            Prefab.GetChildFromPath("BurritoBasket/Paper").ApplyMaterial(mats);
         }
     }
 
-    public class BurritoWithExtrasFoilWrappedItemGroupView : ItemGroupView
+    public class BurritoWithExtrasInaBasketItemGroupView : ItemGroupView
     {
         internal void Setup(GameObject prefab)
         {
@@ -84,8 +78,8 @@ namespace BurritoMod.Customs
             {
                 new()
                 {
-                    GameObject = GameObjectUtils.GetChildObject(prefab, "Burrito"),
-                    Item = Mod.BurritoCooked
+                    GameObject = GameObjectUtils.GetChildObject(prefab, "BurritoBasket"),
+                    Item = Mod.BurritoBasket
                 },
                 new()
                 {
