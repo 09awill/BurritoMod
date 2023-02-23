@@ -25,22 +25,8 @@ namespace BurritoMod.Customs
 
         public override List<IApplianceProperty> Properties => new()
         {
-            KitchenPropertiesUtils.GetCItemProvider(Mod.Foil.ID, int.MaxValue, int.MaxValue, true, false, true, false, true, false, false)
-        };
-
-
-        
-
-        public override List<Appliance.ApplianceProcesses> Processes => new List<Appliance.ApplianceProcesses>()
-        {
-            // ...
-            new Appliance.ApplianceProcesses()
-            {
-                Process = Mod.WrapInFoil,                               // reference to the base process
-                Speed = 1f,                                              // the speed multiplier when using this appliance (for reference, starter = 0.75, base = 1, danger hob/oven = 2)
-                IsAutomatic = true                                       // (optional) whether the process is automatic on this appliance
-            }
-            // ...
+            KitchenPropertiesUtils.GetCItemProvider(Mod.Foil.ID, int.MaxValue, int.MaxValue, true, false, true, false, true, false, false),
+            new CItemHolder()
         };
 
         public override void OnRegister(GameDataObject gameDataObject)

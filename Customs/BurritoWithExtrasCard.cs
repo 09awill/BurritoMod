@@ -43,14 +43,14 @@ namespace BurritoMod.Customs
             Mod.Lettuce,
             Mod.Tomato,
             Mod.Rice,
-            Mod.Chicken
+            Mod.Chicken,
+            Mod.Foil
         };
         public override HashSet<Process> RequiredProcesses => new HashSet<Process>
         {
             Mod.Cook,
             Mod.Chop,
-            Mod.Knead,
-            Mod.WrapInFoil
+            Mod.Knead
         };
         //Locale.English, "Combine chopped lettuce and tomato with the unwrapped base burrito, Interact to wrap and then toast and wrap in foil"
         public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string>

@@ -52,14 +52,14 @@ namespace BurritoMod.Customs
             Mod.Wok,
             Mod.Tortilla,
             Mod.Rice,
-            Mod.Chicken
+            Mod.Chicken,
+            Mod.Foil
         };
         public override HashSet<Process> RequiredProcesses => new HashSet<Process>
         {
             Mod.Cook,
             Mod.Chop,
             Mod.Knead,
-            Mod.WrapInFoil
         };
 
         public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string>
