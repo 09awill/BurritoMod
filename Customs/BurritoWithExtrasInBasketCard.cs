@@ -22,6 +22,11 @@ namespace BurritoMod.Customs
         public override bool DestroyAfterModUninstall => false;
         public override bool IsUnlockable => true;
 
+        public override HashSet<Item> BlockProviders => new()
+        {
+            Mod.BurritoWithExtrasFoilWrapped
+        };
+
         public override List<Unlock> HardcodedRequirements => new()
         {
             Mod.BurritoWithExtrasCard

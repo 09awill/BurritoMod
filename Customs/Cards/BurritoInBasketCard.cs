@@ -6,7 +6,7 @@ using KitchenLib.Utils;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace BurritoMod.Customs
+namespace BurritoMod.Customs.Cards
 {
     internal class BurritoInBasketCard : CustomDish
     {
@@ -21,7 +21,10 @@ namespace BurritoMod.Customs
         public override bool IsSpecificFranchiseTier => false;
         public override bool DestroyAfterModUninstall => false;
         public override bool IsUnlockable => true;
-
+        public override HashSet<Item> BlockProviders => new()
+        {
+            Mod.BurritoFoilWrapped
+        };
         public override List<Unlock> HardcodedRequirements => new()
         {
             Mod.BurritoDish

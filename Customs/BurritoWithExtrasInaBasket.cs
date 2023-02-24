@@ -26,6 +26,7 @@ namespace BurritoMod.Customs
             {
                 Max = 1,
                 Min = 1,
+                IsMandatory= true,
                 Items = new List<Item>()
                 {
                     Mod.BurritoWithExtrasFoilWrapped
@@ -35,6 +36,7 @@ namespace BurritoMod.Customs
             {
                 Max = 1,
                 Min = 1,
+                IsMandatory = true,
                 Items = new List<Item>()
                 {
                     Mod.BurritoBasket
@@ -84,7 +86,7 @@ namespace BurritoMod.Customs
                 new()
                 {
                     GameObject = GameObjectUtils.GetChildObject(prefab, "FoilWrappedBurrito"),
-                    Item = Mod.Foil
+                    Item = Mod.BurritoWithExtrasFoilWrapped
                 }
             };
         }
