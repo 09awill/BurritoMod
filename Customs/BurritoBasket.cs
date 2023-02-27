@@ -21,7 +21,7 @@ namespace BurritoMod.Customs
         {
             Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Tomato") };
             Prefab.GetChild("BurritoBasket").ApplyMaterial(mats);
-            mats = new Material[] { MaterialUtils.GetExistingMaterial("Rice") };
+            mats = new Material[] { MaterialUtils.GetExistingMaterial("Cooked Pastry") };
             Prefab.GetChildFromPath("BurritoBasket/Paper").ApplyMaterial(mats);
         }
 

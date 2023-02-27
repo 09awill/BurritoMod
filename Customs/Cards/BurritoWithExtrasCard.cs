@@ -66,7 +66,6 @@ namespace BurritoMod.Customs
 
         public override void OnRegister(GameDataObject gameDataObject)
         {
-            Debug.Log("Foil Wrapped Burrito");
             //TO DO: Change to chicken
             GameObject FoilWrappedBurrito = DisplayPrefab.GetChild("FoilWrappedBurrito");
             Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Metal- Shiny") };
@@ -81,7 +80,7 @@ namespace BurritoMod.Customs
 
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Tomato") };
             DisplayPrefab.GetChild("BurritoBasket").ApplyMaterial(mats);
-            mats = new Material[] { MaterialUtils.GetExistingMaterial("Rice") };
+            mats = new Material[] { MaterialUtils.GetExistingMaterial("Cooked Pastry") };
             DisplayPrefab.GetChildFromPath("BurritoBasket/Paper").ApplyMaterial(mats);
         }
     }

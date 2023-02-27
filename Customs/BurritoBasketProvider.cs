@@ -28,7 +28,6 @@ namespace BurritoMod.Customs
         };
         public override void OnRegister(GameDataObject gameDataObject)
         {
-            Debug.Log("Baskets");
 
             GameObject basketStack = Prefab.GetChild("BasketStack");
             Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Tomato") };
@@ -37,27 +36,24 @@ namespace BurritoMod.Customs
             basketStack.GetChild("BurritoBasket (2)").ApplyMaterial(mats);
             basketStack.GetChild("BurritoBasket (3)").ApplyMaterial(mats);
 
-            mats = new Material[] { MaterialUtils.GetExistingMaterial("Rice") };
+            mats = new Material[] { MaterialUtils.GetExistingMaterial("Cooked Pastry") };
 
             basketStack.GetChildFromPath("BurritoBasket/Paper").ApplyMaterial(mats);
             basketStack.GetChildFromPath("BurritoBasket (1)/Paper").ApplyMaterial(mats);
             basketStack.GetChildFromPath("BurritoBasket (2)/Paper").ApplyMaterial(mats);
             basketStack.GetChildFromPath("BurritoBasket (3)/Paper").ApplyMaterial(mats);
 
-            Debug.Log("Counter");
 
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Wood 4 - Painted") };
 
             Prefab.GetChildFromPath("Tray Counter/Counter2/Counter").ApplyMaterial(mats);
             Prefab.GetChildFromPath("Tray Counter/Counter2/Counter Doors").ApplyMaterial(mats);
 
-            Debug.Log("Counter Default");
 
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Wood - Default") };
             Prefab.GetChildFromPath("Tray Counter/Counter2/Counter Surface").ApplyMaterial(mats);
             Prefab.GetChildFromPath("Tray Counter/Counter2/Counter Top").ApplyMaterial(mats);
 
-            Debug.Log("Counter Handles ");
 
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Knob") };
             Prefab.GetChildFromPath("Tray Counter/Counter2/Handles").ApplyMaterial(mats);

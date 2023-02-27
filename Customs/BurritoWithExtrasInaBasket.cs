@@ -49,7 +49,6 @@ namespace BurritoMod.Customs
         //Bread - Inside Cooked for Main Burrito
         public override void OnRegister(GameDataObject gameDataObject)
         {
-            Debug.Log("Foil Wrapped Burrito");
             Prefab.GetComponent<BurritoWithExtrasInaBasketItemGroupView>()?.Setup(Prefab);
             //TO DO: Change to chicken
             GameObject FoilWrappedBurrito = Prefab.GetChild("FoilWrappedBurrito");
@@ -65,7 +64,7 @@ namespace BurritoMod.Customs
 
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Tomato") };
             Prefab.GetChild("BurritoBasket").ApplyMaterial(mats);
-            mats = new Material[] { MaterialUtils.GetExistingMaterial("Rice") };
+            mats = new Material[] { MaterialUtils.GetExistingMaterial("Cooked Pastry") };
             Prefab.GetChildFromPath("BurritoBasket/Paper").ApplyMaterial(mats);
         }
     }

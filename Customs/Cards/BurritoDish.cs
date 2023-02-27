@@ -77,21 +77,16 @@ namespace BurritoMod.Customs.Cards
 
         public override void OnRegister(GameDataObject gameDataObject)
         {
-            Debug.Log("Burrito Dish Icon");
             //TO DO: Change to chicken
             GameObject FoilWrappedBurrito = DisplayPrefab.GetChild("FoilWrappedBurrito");
             Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Metal- Shiny") };
             FoilWrappedBurrito.ApplyMaterial(mats);
             FoilWrappedBurrito.GetChild("FoilEnds").ApplyMaterial(mats);
-                        /*
 
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Tomato") };
             DisplayPrefab.GetChild("BurritoBasket").ApplyMaterial(mats);
-            mats = new Material[] { MaterialUtils.GetExistingMaterial("Rice") };
-            DisplayPrefab.GetChildFromPath("BurritoBasket/Paper").ApplyMaterial(mats);
-                        */
-
-            Debug.Log("Burrito Dish Icon Finished");
+            mats = new Material[] { MaterialUtils.GetExistingMaterial("Cooked Pastry") };
+            DisplayPrefab.GetChild("BurritoBasket").GetChild("Paper").ApplyMaterial(mats);
 
         }
     }
