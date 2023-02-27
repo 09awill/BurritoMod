@@ -84,7 +84,7 @@ namespace KitchenBurritoMod
 
         // Modded Appliances 
         internal static Appliance FoilProvider => GetModdedGDO<Appliance, FoilProvider>();
-        internal static Appliance FlourTortillaProvider => GetModdedGDO<Appliance, FlourTortilla>();
+        internal static Appliance FlourTortillaProvider => GetModdedGDO<Appliance, FlourTortillaProvider>();
         internal static Appliance BurritoBasketProvider => GetModdedGDO<Appliance, BurritoBasketProvider>();
 
         //Processes
@@ -121,7 +121,7 @@ namespace KitchenBurritoMod
             AddGameDataObject<Foil>();
 
             AddGameDataObject<BurritoBasketProvider>();
-            AddGameDataObject<FlourTortilla>();
+            AddGameDataObject<FlourTortillaProvider>();
             AddGameDataObject<FoilProvider>();
             AddGameDataObject<WrapInFoil>();
             LogInfo("Done loading game data.");

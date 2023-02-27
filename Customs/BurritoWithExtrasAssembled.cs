@@ -16,7 +16,6 @@ namespace BurritoMod.Customs
         public override string UniqueNameID => "BurritoWithExtrasAssembled";
         public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("TortillaWithExtrasAssembled");
         public override ItemCategory ItemCategory => ItemCategory.Generic;
-        public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
         public override ItemValue ItemValue => ItemValue.Large;
 
         public override List<Item.ItemProcess> Processes => new List<Item.ItemProcess>
