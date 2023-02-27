@@ -9,22 +9,22 @@ using UnityEngine;
 
 namespace BurritoMod.Customs
 {
-    internal class TortillaProvider : CustomAppliance
+    internal class FlourTortillaProvider : CustomAppliance
     {
-        public override string UniqueNameID => "TortillaProvider";
-        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("TortillaProvider");
+        public override string UniqueNameID => "FlourTortillaProvider";
+        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("FlourTortillaProvider");
         public override PriceTier PriceTier => PriceTier.Medium;
         public override bool SellOnlyAsDuplicate => true;
         public override bool IsPurchasable => true;
         public override ShoppingTags ShoppingTags => ShoppingTags.Cooking | ShoppingTags.Misc;
         public override List<(Locale, ApplianceInfo)> InfoList => new()
         {
-            ( Locale.English, LocalisationUtils.CreateApplianceInfo("Tortilla", "Provides Tortillas", new(), new()) )
+            ( Locale.English, LocalisationUtils.CreateApplianceInfo("Flour Tortilla", "Provides Flour Tortillas", new(), new()) )
         };
 
         public override List<IApplianceProperty> Properties => new List<IApplianceProperty>()
         {
-            KitchenPropertiesUtils.GetUnlimitedCItemProvider(Mod.Tortilla.ID)
+            KitchenPropertiesUtils.GetUnlimitedCItemProvider(Mod.FlourTortilla.ID)
         };
         public override void OnRegister(GameDataObject gameDataObject)
         {

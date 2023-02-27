@@ -7,10 +7,10 @@ using UnityEngine;
 
 namespace BurritoMod.Customs
 {
-    internal class Tortilla : CustomItem
+    internal class FlourTortilla : CustomItem
     {
-        public override string UniqueNameID => "Large Tortilla";
-        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("Large Tortilla");
+        public override string UniqueNameID => "FlourTortilla";
+        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("FlourTortilla");
         public override ItemCategory ItemCategory => ItemCategory.Generic;
         public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
         public override ItemValue ItemValue => ItemValue.Medium;
