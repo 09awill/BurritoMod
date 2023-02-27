@@ -178,5 +178,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: BurritoBasket
       objectReference: {fileID: 0}
+    - target: {fileID: 6204451353223021980, guid: c01f81607d3ec8a489ca02a635472e12, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204451353223021980, guid: c01f81607d3ec8a489ca02a635472e12, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204451353223021980, guid: c01f81607d3ec8a489ca02a635472e12, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c01f81607d3ec8a489ca02a635472e12, type: 3}
