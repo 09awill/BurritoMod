@@ -37,7 +37,7 @@ namespace BurritoMod.Customs
                 IsMandatory = true,
                 Items = new List<Item>()
                 {
-                    Mod.Tortilla,
+                    Mod.FlourTortilla,
                 }
             },
             new ItemSet()
@@ -163,7 +163,7 @@ namespace BurritoMod.Customs
                 new()
                 {
                     GameObject = GameObjectUtils.GetChildObject(prefab, "Tortilla"),
-                    Item = Mod.Tortilla
+                    Item = Mod.FlourTortilla
                 },
                 new()
                 {
@@ -181,7 +181,7 @@ namespace BurritoMod.Customs
                 new()
                 {
                     Text = "Tor",
-                    Item = Mod.Tortilla
+                    Item = Mod.FlourTortilla
                 },
                 new()
                 {
