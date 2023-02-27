@@ -12,7 +12,6 @@ namespace BurritoMod.Customs
         public override string UniqueNameID => "Burrito Basket";
         public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("BurritoBasket");
         public override ItemCategory ItemCategory => ItemCategory.Generic;
-        public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
         public override ItemValue ItemValue => ItemValue.Medium;
         public override Appliance DedicatedProvider => Mod.BurritoBasketProvider;
 

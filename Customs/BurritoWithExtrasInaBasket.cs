@@ -16,7 +16,6 @@ namespace BurritoMod.Customs
         public override string UniqueNameID => "Burrito With Extras In A Basket";
         public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("BurritoWithExtrasInBasket");
         public override ItemCategory ItemCategory => ItemCategory.Generic;
-        public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
         public override ItemValue ItemValue => ItemValue.Large;
         public override bool CanContainSide => true;
 
