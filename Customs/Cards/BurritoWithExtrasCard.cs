@@ -40,7 +40,7 @@ namespace BurritoMod.Customs
         public override HashSet<Item> MinimumIngredients => new HashSet<Item>
         {
             Mod.Wok,
-            Mod.Tortilla,
+            Mod.FlourTortilla,
             Mod.Lettuce,
             Mod.Tomato,
             Mod.Rice,

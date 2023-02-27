@@ -53,7 +53,7 @@ namespace BurritoMod.Customs.Cards
         public override HashSet<Item> MinimumIngredients => new HashSet<Item>
         {
             Mod.Wok,
-            Mod.Tortilla,
+            Mod.FlourTortilla,
             Mod.Rice,
             Mod.Chicken,
             Mod.Foil,
