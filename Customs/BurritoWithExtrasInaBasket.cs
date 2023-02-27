@@ -72,7 +72,6 @@ namespace BurritoMod.Customs
 
     public class BurritoWithExtrasInaBasketItemGroupView : ItemGroupView
     {
-        int m_ComponentGroups = 0;
         internal void Setup(GameObject prefab)
         {
             // This tells which sub-object of the prefab corresponds to each component of the ItemGroup
@@ -90,11 +89,6 @@ namespace BurritoMod.Customs
                     Item = Mod.BurritoWithExtrasFoilWrapped
                 }
             };
-        }
-
-        private void Update()
-        {
-            print($"Adam DEBUG: Component groups:{ComponentGroups.Count}, {ComponentGroups[0].IsDrawing}");
         }
     }
 }

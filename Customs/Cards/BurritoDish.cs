@@ -1,5 +1,6 @@
 ﻿using BurritoMod.Registry;
 using IngredientLib.Util;
+using Kitchen;
 using KitchenBurritoMod;
 using KitchenData;
 using KitchenLib.Customs;
@@ -14,7 +15,7 @@ namespace BurritoMod.Customs.Cards
     {
         public override string UniqueNameID => "Burrito Dish";
         public override DishType Type => DishType.Base;
-        public override GameObject DisplayPrefab => Mod.Bundle.LoadAsset<GameObject>("BaseBurritoInBasket");
+        public override GameObject DisplayPrefab => Mod.Bundle.LoadAsset<GameObject>("BaseBurritoInBasketIcon");
         public override GameObject IconPrefab => DisplayPrefab;
         public override DishCustomerChange CustomerMultiplier => DishCustomerChange.LargeDecrease;
         public override CardType CardType => CardType.Default;
@@ -76,21 +77,22 @@ namespace BurritoMod.Customs.Cards
 
         public override void OnRegister(GameDataObject gameDataObject)
         {
-            Debug.Log("Foil Wrapped Burrito");
-
+            Debug.Log("Burrito Dish Icon");
             //TO DO: Change to chicken
             GameObject FoilWrappedBurrito = DisplayPrefab.GetChild("FoilWrappedBurrito");
             Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Metal- Shiny") };
             FoilWrappedBurrito.ApplyMaterial(mats);
             FoilWrappedBurrito.GetChild("FoilEnds").ApplyMaterial(mats);
-
+                        /*
 
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Tomato") };
             DisplayPrefab.GetChild("BurritoBasket").ApplyMaterial(mats);
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Rice") };
             DisplayPrefab.GetChildFromPath("BurritoBasket/Paper").ApplyMaterial(mats);
+                        */
 
-            Debug.Log("Foil Wrapped Burrito");
+            Debug.Log("Burrito Dish Icon Finished");
+
         }
     }
 }
