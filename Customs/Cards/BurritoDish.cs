@@ -5,6 +5,7 @@ using KitchenData;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
 using System.Collections.Generic;
+using Unity.Entities;
 using UnityEngine;
 
 namespace BurritoMod.Customs.Cards
@@ -13,7 +14,7 @@ namespace BurritoMod.Customs.Cards
     {
         public override string UniqueNameID => "Burrito Dish";
         public override DishType Type => DishType.Base;
-        public override GameObject DisplayPrefab => Mod.Bundle.LoadAsset<GameObject>("TortillaWrappedIcon");
+        public override GameObject DisplayPrefab => Mod.Bundle.LoadAsset<GameObject>("BaseBurritoInBasket");
         public override GameObject IconPrefab => DisplayPrefab;
         public override DishCustomerChange CustomerMultiplier => DishCustomerChange.LargeDecrease;
         public override CardType CardType => CardType.Default;
@@ -23,6 +24,7 @@ namespace BurritoMod.Customs.Cards
         public override bool IsAvailableAsLobbyOption => true;
         public override bool DestroyAfterModUninstall => false;
         public override bool IsUnlockable => true;
+
 
 
         public override List<string> StartingNameSet => new List<string>
@@ -42,7 +44,7 @@ namespace BurritoMod.Customs.Cards
         {
             new Dish.MenuItem
             {
-                Item = Mod.BurritoFoilWrapped,
+                Item = Mod.BurritoInaBasket,
                 Phase = MenuPhase.Main,
                 Weight = 1
             }
@@ -53,7 +55,8 @@ namespace BurritoMod.Customs.Cards
             Mod.Tortilla,
             Mod.Rice,
             Mod.Chicken,
-            Mod.Foil
+            Mod.Foil,
+            Mod.BurritoBasket
         };
         public override HashSet<Process> RequiredProcesses => new HashSet<Process>
         {
@@ -64,11 +67,11 @@ namespace BurritoMod.Customs.Cards
 
         public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string>
         {
-            { Locale.English, "Cook Chicken and shred, combine with tortilla, Cook rice and add to tortilla, Interact to wrap and then toast and wrap in foil" }
+            { Locale.English, "Cook Chicken and shred, combine with tortilla, Cook rice and add to tortilla, Interact to wrap and then toast and wrap in foil. Serve in a basket!" }
         };
         public override IDictionary<Locale, UnlockInfo> LocalisedInfo => new Dictionary<Locale, UnlockInfo>
         {
-            { Locale.English, LocalisationUtils.CreateUnlockInfo("Burrito", "Adds Burrito as a Main", "Just for memes.") }
+            { Locale.English, LocalisationUtils.CreateUnlockInfo("Burrito", "Adds Burrito as a Main", "It means little donkey.") }
         };
 
         public override void OnRegister(GameDataObject gameDataObject)
@@ -80,6 +83,14 @@ namespace BurritoMod.Customs.Cards
             Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Metal- Shiny") };
             FoilWrappedBurrito.ApplyMaterial(mats);
             FoilWrappedBurrito.GetChild("FoilEnds").ApplyMaterial(mats);
+
+
+            mats = new Material[] { MaterialUtils.GetExistingMaterial("Tomato") };
+            DisplayPrefab.GetChild("BurritoBasket").ApplyMaterial(mats);
+            mats = new Material[] { MaterialUtils.GetExistingMaterial("Rice") };
+            DisplayPrefab.GetChildFromPath("BurritoBasket/Paper").ApplyMaterial(mats);
+
+            Debug.Log("Foil Wrapped Burrito");
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using BurritoMod.Customs;
 using BurritoMod.Customs.Cards;
+using Kitchen;
 using KitchenData;
 using KitchenLib;
 using KitchenLib.Customs;
@@ -22,7 +23,7 @@ namespace KitchenBurritoMod
         // Mod Version must follow semver notation e.g. "1.2.3"
         public const string MOD_GUID = "Madvion.PlateUp.BurritoMod";
         public const string MOD_NAME = "Burrito Mod";
-        public const string MOD_VERSION = "0.1.0";
+        public const string MOD_VERSION = "0.1.2";
         public const string MOD_AUTHOR = "Madvion";
         public const string MOD_GAMEVERSION = ">=1.1.3";
         // Game version this mod is designed for in semver
@@ -80,8 +81,6 @@ namespace KitchenBurritoMod
         internal static Dish BurritoDish => GetModdedGDO<Dish, BurritoDish>();
 
         internal static Dish BurritoWithExtrasCard => GetModdedGDO<Dish, BurritoWithExtrasCard>();
-        internal static Dish BurritoInBasketCard => GetModdedGDO<Dish, BurritoInBasketCard>();
-        internal static Dish BurritoWithExtrasInBasketCard => GetModdedGDO<Dish, BurritoWithExtrasInBasketCard>();
 
         // Modded Appliances 
         internal static Appliance FoilProvider => GetModdedGDO<Appliance, FoilProvider>();
@@ -117,8 +116,6 @@ namespace KitchenBurritoMod
             AddGameDataObject<BaseBurritoAssembled>();
             AddGameDataObject<BurritoInaBasket>();
             AddGameDataObject<BurritoWithExtrasInaBasket>();
-            AddGameDataObject<BurritoWithExtrasInBasketCard>();
-            AddGameDataObject<BurritoInBasketCard>();
             AddGameDataObject<BurritoBasket>();
             AddGameDataObject<Tortilla>();
             AddGameDataObject<Foil>();

@@ -5,6 +5,7 @@ using KitchenData;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using static KitchenData.ItemGroup;
 
@@ -17,7 +18,7 @@ namespace BurritoMod.Customs
         public override ItemCategory ItemCategory => ItemCategory.Generic;
         public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
         public override ItemValue ItemValue => ItemValue.Large;
-        public override bool CanContainSide => false;
+
 
         public override List<ItemSet> Sets => new List<ItemSet>()
         {
@@ -25,6 +26,7 @@ namespace BurritoMod.Customs
             {
                 Max = 1,
                 Min = 1,
+                IsMandatory = true,
                 Items = new List<Item>()
                 {
                     Mod.BurritoCooked,
@@ -34,6 +36,7 @@ namespace BurritoMod.Customs
             {
                 Max = 1,
                 Min = 1,
+                IsMandatory = true,
                 Items = new List<Item>()
                 {
                     Mod.Foil,
@@ -41,12 +44,11 @@ namespace BurritoMod.Customs
             }
         };
 
-
         //Well-done  Burger for spots on burrito
         //Bread - Inside Cooked for Main Burrito
         public override void OnRegister(GameDataObject gameDataObject)
         {
-
+            Prefab.GetComponent<BurritoFoilWrappedItemGroupView>()?.Setup(Prefab);
             Debug.Log("Base Burrito");
 
             Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Bread - Inside") };
@@ -66,7 +68,6 @@ namespace BurritoMod.Customs
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Metal- Shiny") };
             FoilWrappedBurrito.ApplyMaterial(mats);
             FoilWrappedBurrito.GetChild("FoilEnds").ApplyMaterial(mats);
-
         }
     }
 

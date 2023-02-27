@@ -5,6 +5,7 @@ using KitchenData;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using static KitchenData.ItemGroup;
 
@@ -44,13 +45,12 @@ namespace BurritoMod.Customs
             }
         };
 
-
         //Well-done  Burger for spots on burrito
         //Bread - Inside Cooked for Main Burrito
         public override void OnRegister(GameDataObject gameDataObject)
         {
             Debug.Log("Foil Wrapped Burrito");
-
+            Prefab.GetComponent<BurritoWithExtrasInaBasketItemGroupView>()?.Setup(Prefab);
             //TO DO: Change to chicken
             GameObject FoilWrappedBurrito = Prefab.GetChild("FoilWrappedBurrito");
             Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Metal- Shiny") };
@@ -72,6 +72,7 @@ namespace BurritoMod.Customs
 
     public class BurritoWithExtrasInaBasketItemGroupView : ItemGroupView
     {
+        int m_ComponentGroups = 0;
         internal void Setup(GameObject prefab)
         {
             // This tells which sub-object of the prefab corresponds to each component of the ItemGroup
@@ -91,5 +92,9 @@ namespace BurritoMod.Customs
             };
         }
 
+        private void Update()
+        {
+            print($"Adam DEBUG: Component groups:{ComponentGroups.Count}, {ComponentGroups[0].IsDrawing}");
+        }
     }
 }

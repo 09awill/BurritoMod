@@ -17,7 +17,6 @@ namespace BurritoMod.Customs
         public override ItemCategory ItemCategory => ItemCategory.Generic;
         public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
         public override ItemValue ItemValue => ItemValue.Large;
-        public override bool CanContainSide => false;
 
 
         public override List<ItemSet> Sets => new List<ItemSet>()
@@ -26,6 +25,7 @@ namespace BurritoMod.Customs
             {
                 Max = 1,
                 Min = 1,
+                IsMandatory = true,
                 Items = new List<Item>()
                 {
                     Mod.BurritoWithExtrasCooked,
@@ -35,6 +35,7 @@ namespace BurritoMod.Customs
             {
                 Max = 1,
                 Min = 1,
+                IsMandatory = true,
                 Items = new List<Item>()
                 {
                     Mod.Foil,
