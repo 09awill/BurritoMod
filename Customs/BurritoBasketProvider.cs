@@ -9,39 +9,39 @@ using UnityEngine;
 
 namespace BurritoMod.Customs
 {
-    internal class TortillaProvider : CustomAppliance
+    internal class BurritoBasketProvider : CustomAppliance
     {
-        public override string UniqueNameID => "TortillaProvider";
-        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("TortillaProvider");
+        public override string UniqueNameID => "BurritoBasketProvider";
+        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("BurritoBasketProvider");
         public override PriceTier PriceTier => PriceTier.Medium;
         public override bool SellOnlyAsDuplicate => true;
         public override bool IsPurchasable => true;
         public override ShoppingTags ShoppingTags => ShoppingTags.Cooking | ShoppingTags.Misc;
         public override List<(Locale, ApplianceInfo)> InfoList => new()
         {
-            ( Locale.English, LocalisationUtils.CreateApplianceInfo("Tortilla", "Provides Tortillas", new(), new()) )
+            ( Locale.English, LocalisationUtils.CreateApplianceInfo("Burrito Baskets", "Provides BurritoBaskets", new(), new()) )
         };
 
         public override List<IApplianceProperty> Properties => new List<IApplianceProperty>()
         {
-            KitchenPropertiesUtils.GetUnlimitedCItemProvider(Mod.Tortilla.ID)
+            KitchenPropertiesUtils.GetUnlimitedCItemProvider(Mod.BurritoBasket.ID)
         };
         public override void OnRegister(GameDataObject gameDataObject)
         {
 
-            Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Bread - Inside") };
-            Prefab.GetChildFromPath("TortillaStack/Wrap").ApplyMaterial(mats);
-            Prefab.GetChildFromPath("TortillaStack/Wrap.001").ApplyMaterial(mats);
-            Prefab.GetChildFromPath("TortillaStack/Wrap.002").ApplyMaterial(mats);
-            Prefab.GetChildFromPath("TortillaStack/Wrap.003").ApplyMaterial(mats);
-            Prefab.GetChildFromPath("TortillaStack/Wrap.004").ApplyMaterial(mats);
+            GameObject basketStack = Prefab.GetChild("BasketStack");
+            Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Tomato") };
+            basketStack.GetChild("BurritoBasket").ApplyMaterial(mats);
+            basketStack.GetChild("BurritoBasket (1)").ApplyMaterial(mats);
+            basketStack.GetChild("BurritoBasket (2)").ApplyMaterial(mats);
+            basketStack.GetChild("BurritoBasket (3)").ApplyMaterial(mats);
 
-            mats = new Material[] { MaterialUtils.GetExistingMaterial("Well-done  Burger") };
-            Prefab.GetChildFromPath("TortillaStack/Wrap/Tortilla_Charred").ApplyMaterial(mats);
-            Prefab.GetChildFromPath("TortillaStack/Wrap.001/Tortilla_Charred.001").ApplyMaterial(mats);
-            Prefab.GetChildFromPath("TortillaStack/Wrap.002/Tortilla_Charred.002").ApplyMaterial(mats);
-            Prefab.GetChildFromPath("TortillaStack/Wrap.003/Tortilla_Charred.003").ApplyMaterial(mats);
-            Prefab.GetChildFromPath("TortillaStack/Wrap.004/Tortilla_Charred.004").ApplyMaterial(mats);
+            mats = new Material[] { MaterialUtils.GetExistingMaterial("Cooked Pastry") };
+
+            basketStack.GetChildFromPath("BurritoBasket/Paper").ApplyMaterial(mats);
+            basketStack.GetChildFromPath("BurritoBasket (1)/Paper").ApplyMaterial(mats);
+            basketStack.GetChildFromPath("BurritoBasket (2)/Paper").ApplyMaterial(mats);
+            basketStack.GetChildFromPath("BurritoBasket (3)/Paper").ApplyMaterial(mats);
 
 
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Wood 4 - Painted") };

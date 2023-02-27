@@ -1,4 +1,6 @@
 ﻿using BurritoMod.Customs;
+using BurritoMod.Customs.Cards;
+using Kitchen;
 using KitchenData;
 using KitchenLib;
 using KitchenLib.Customs;
@@ -21,7 +23,7 @@ namespace KitchenBurritoMod
         // Mod Version must follow semver notation e.g. "1.2.3"
         public const string MOD_GUID = "Madvion.PlateUp.BurritoMod";
         public const string MOD_NAME = "Burrito Mod";
-        public const string MOD_VERSION = "0.1.0";
+        public const string MOD_VERSION = "0.1.2";
         public const string MOD_AUTHOR = "Madvion";
         public const string MOD_GAMEVERSION = ">=1.1.3";
         // Game version this mod is designed for in semver
@@ -71,6 +73,9 @@ namespace KitchenBurritoMod
         internal static Item BurritoWrapped => GetModdedGDO<Item, BurritoWrapped>();
         internal static Item BurritoCooked => GetModdedGDO<Item, BurritoCooked>();
         internal static Item Foil => GetModdedGDO<Item, Foil>();
+        internal static Item BurritoBasket => GetModdedGDO<Item, BurritoBasket>();
+        internal static Item BurritoWithExtrasInaBasket => GetModdedGDO<Item, BurritoWithExtrasInaBasket>();
+        internal static Item BurritoInaBasket => GetModdedGDO<Item, BurritoInaBasket>();
 
         // Modded Dishes
         internal static Dish BurritoDish => GetModdedGDO<Dish, BurritoDish>();
@@ -80,6 +85,7 @@ namespace KitchenBurritoMod
         // Modded Appliances 
         internal static Appliance FoilProvider => GetModdedGDO<Appliance, FoilProvider>();
         internal static Appliance TortillaProvider => GetModdedGDO<Appliance, TortillaProvider>();
+        internal static Appliance BurritoBasketProvider => GetModdedGDO<Appliance, BurritoBasketProvider>();
 
         //Processes
         public static Process WrapInFoil => GetModdedGDO<Process, WrapInFoil>();
@@ -108,9 +114,13 @@ namespace KitchenBurritoMod
             AddGameDataObject<BurritoCooked>();
             AddGameDataObject<BurritoWrapped>();
             AddGameDataObject<BaseBurritoAssembled>();
+            AddGameDataObject<BurritoInaBasket>();
+            AddGameDataObject<BurritoWithExtrasInaBasket>();
+            AddGameDataObject<BurritoBasket>();
             AddGameDataObject<Tortilla>();
             AddGameDataObject<Foil>();
 
+            AddGameDataObject<BurritoBasketProvider>();
             AddGameDataObject<TortillaProvider>();
             AddGameDataObject<FoilProvider>();
             AddGameDataObject<WrapInFoil>();

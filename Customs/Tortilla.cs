@@ -23,7 +23,6 @@ namespace BurritoMod.Customs
             Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Bread - Inside") };
             Tortilla.GetChild("Wrap").ApplyMaterial(mats);
 
-            Debug.Log("Wrap");
 
 
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Well-done  Burger") };

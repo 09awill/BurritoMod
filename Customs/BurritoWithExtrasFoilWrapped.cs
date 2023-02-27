@@ -19,13 +19,13 @@ namespace BurritoMod.Customs
         public override ItemValue ItemValue => ItemValue.Large;
 
 
-
         public override List<ItemSet> Sets => new List<ItemSet>()
         {
             new ItemSet()
             {
                 Max = 1,
                 Min = 1,
+                IsMandatory = true,
                 Items = new List<Item>()
                 {
                     Mod.BurritoWithExtrasCooked,
@@ -35,6 +35,7 @@ namespace BurritoMod.Customs
             {
                 Max = 1,
                 Min = 1,
+                IsMandatory = true,
                 Items = new List<Item>()
                 {
                     Mod.Foil,
@@ -53,13 +54,8 @@ namespace BurritoMod.Customs
             Prefab.GetChildFromPath("Burrito/Plane").ApplyMaterial(mats);
             Prefab.GetChildFromPath("Burrito/Plane.001").ApplyMaterial(mats);
 
-            Debug.Log("Burrito Toasted");
-
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Well-done  Burger") };
             Prefab.GetChildFromPath("Burrito/BurritoToasted").ApplyMaterial(mats);
-
-
-            Debug.Log("Foil Wrapped Burrito");
 
             //TO DO: Change to chicken
             GameObject FoilWrappedBurrito = Prefab.GetChild("FoilWrappedBurrito");
@@ -92,7 +88,7 @@ namespace BurritoMod.Customs
                 {
                     GameObject = GameObjectUtils.GetChildObject(prefab, "FoilWrappedBurrito"),
                     Item = Mod.Foil
-                },
+                }
             };
         }
 

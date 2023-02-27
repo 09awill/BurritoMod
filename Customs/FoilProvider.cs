@@ -31,14 +31,12 @@ namespace BurritoMod.Customs
 
         public override void OnRegister(GameDataObject gameDataObject)
         {
-            Debug.Log("Counter");
 
             Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Wood - Default") };
             Prefab.GetChild("BaseCounter").ApplyMaterial(mats);
             Prefab.GetChildFromPath("BaseCounter/BaseCountertop").ApplyMaterial(mats);
             Prefab.GetChildFromPath("BaseCounter/BaseCounterHandles").ApplyMaterial(mats);
 
-            Debug.Log("Foil Dispenser");
             Prefab.GetChild("FoilDispenser").ApplyMaterial(mats);
             Prefab.GetChildFromPath("FoilDispenser/Plane").ApplyMaterial(mats);
             Prefab.GetChildFromPath("FoilDispenser/WoodenEnds").ApplyMaterial(mats);
@@ -50,6 +48,7 @@ namespace BurritoMod.Customs
             var holdTransform = Prefab.GetChildFromPath("BaseCounter/HoldPoint").transform;
             var holdPoint = Prefab.AddComponent<HoldPointContainer>();
             holdPoint.HoldPoint = holdTransform;
+
         }
     }
 }

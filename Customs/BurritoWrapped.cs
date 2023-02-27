@@ -30,7 +30,6 @@ namespace BurritoMod.Customs
         //Bread - Inside Cooked for Main Burrito
         public override void OnRegister(GameDataObject gameDataObject)
         {
-            Debug.Log("Base Burrito");
 
             Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Bread - Inside") };
             Prefab.GetChild("Burrito").ApplyMaterial(mats);
