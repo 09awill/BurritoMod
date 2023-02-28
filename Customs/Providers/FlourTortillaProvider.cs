@@ -7,7 +7,7 @@ using KitchenLib.Utils;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace BurritoMod.Customs
+namespace BurritoMod.Customs.Providers
 {
     internal class FlourTortillaProvider : CustomAppliance
     {

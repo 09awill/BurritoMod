@@ -5,7 +5,7 @@ using KitchenLib.Customs;
 using KitchenLib.Utils;
 using UnityEngine;
 
-namespace BurritoMod.Customs
+namespace BurritoMod.Customs.BurritoSharedItems
 {
     internal class Foil : CustomItem
     {
