@@ -1,5 +1,4 @@
 ﻿using IngredientLib.Util;
-using Kitchen;
 using KitchenBurritoMod;
 using KitchenData;
 using KitchenLib.Customs;
@@ -7,22 +6,23 @@ using KitchenLib.Utils;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace BurritoMod.Customs
+namespace BurritoMod.Customs.BurritoWithSalad
 {
-    class BurritoWrapped : CustomItem
+    class BurritoWithExtrasWrapped : CustomItem
     {
-        public override string UniqueNameID => "BurritoWrapped";
+        public override string UniqueNameID => "BurritoWithExtrasWrapped";
         public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("TortillaWrapped");
         public override ItemCategory ItemCategory => ItemCategory.Generic;
         public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
-        public override ItemValue ItemValue => ItemValue.Large;
+        public override ItemValue ItemValue => ItemValue.Medium;
+
         public override List<Item.ItemProcess> Processes => new List<Item.ItemProcess>
         {
             new Item.ItemProcess
             {
                 Duration = 1,
                 Process = Mod.Cook,
-                Result = Mod.BurritoCooked
+                Result = Mod.BurritoWithExtrasCooked
             }
         };
 

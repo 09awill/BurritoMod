@@ -6,7 +6,7 @@ using KitchenLib.Utils;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace BurritoMod.Customs
+namespace BurritoMod.Customs.BurritoWithSalad
 {
     class BurritoWithExtrasCooked : CustomItem
     {
