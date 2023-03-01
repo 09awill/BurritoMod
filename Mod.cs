@@ -62,9 +62,9 @@ namespace KitchenBurritoMod
 
         // Modded Items
         internal static Item Chicken => Find<Item>(IngredientLib.References.GetIngredient("Chicken"));
-
         internal static Item CookedChicken => Find<Item>(IngredientLib.References.GetIngredient("Cooked Chicken"));
         internal static Item ShreddedChicken => Find<Item>(IngredientLib.References.GetIngredient("Shredded Chicken"));
+        internal static Item FlourTortilla => Find<Item>(IngredientLib.References.GetIngredient("Flour Tortillas"));
 
         internal static ItemGroup BaseBurritoAssembled => GetModdedGDO<ItemGroup, BaseBurritoAssembled>();
         internal static ItemGroup BurritoWithExtrasAssembled => GetModdedGDO<ItemGroup, BurritoWithExtrasAssembled>();
@@ -72,7 +72,6 @@ namespace KitchenBurritoMod
         internal static Item BurritoWithExtrasCooked => GetModdedGDO<Item, BurritoWithExtrasCooked>();
         internal static Item BurritoFoilWrapped => GetModdedGDO<Item, BurritoFoilWrapped>();
         internal static Item BurritoWithExtrasFoilWrapped => GetModdedGDO<Item, BurritoWithExtrasFoilWrapped>();
-        internal static Item FlourTortilla => GetModdedGDO<Item, FlourTortilla>();
 
         internal static Item BurritoWrapped => GetModdedGDO<Item, BurritoWrapped>();
         internal static Item BurritoCooked => GetModdedGDO<Item, BurritoCooked>();
@@ -88,7 +87,6 @@ namespace KitchenBurritoMod
 
         // Modded Appliances 
         internal static Appliance FoilProvider => GetModdedGDO<Appliance, FoilProvider>();
-        internal static Appliance FlourTortillaProvider => GetModdedGDO<Appliance, FlourTortillaProvider>();
         internal static Appliance BurritoBasketProvider => GetModdedGDO<Appliance, BurritoBasketProvider>();
 
         //Processes
@@ -121,11 +119,9 @@ namespace KitchenBurritoMod
             AddGameDataObject<BurritoInaBasket>();
             AddGameDataObject<BurritoWithExtrasInaBasket>();
             AddGameDataObject<BurritoBasket>();
-            AddGameDataObject<FlourTortilla>();
             AddGameDataObject<Foil>();
 
             AddGameDataObject<BurritoBasketProvider>();
-            AddGameDataObject<FlourTortillaProvider>();
             AddGameDataObject<FoilProvider>();
             AddGameDataObject<WrapInFoil>();
             LogInfo("Done loading game data.");
