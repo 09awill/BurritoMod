@@ -14,7 +14,7 @@ namespace BurritoMod.Customs.BurritoSharedItems
         public override ItemCategory ItemCategory => ItemCategory.Generic;
         public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
         public override ItemValue ItemValue => ItemValue.Medium;
-        public override Appliance DedicatedProvider => Mod.FlourTortillaProvider;
+        //public override Appliance DedicatedProvider => Mod.FlourTortillaProvider; <- Swapped for ingredient lib so don't need this reference
 
 
         public override void OnRegister(GameDataObject gameDataObject)
