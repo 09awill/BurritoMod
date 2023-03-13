@@ -24,7 +24,7 @@ namespace KitchenBurritoMod.Utils
         protected override void OnUpdate()
         {
             Mod.LogWarning("Adding franchise kitchen slot");
-            CreateSlot(new Vector3(4f, 0f, 5f), Vector3.left);            
+            CreateSlot(new Vector3(3f, 0f, 6f), Vector3.left);            
         }
 
         protected void CreateSlot(Vector3 pos, Vector3 face)
