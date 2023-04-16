@@ -1,5 +1,4 @@
-﻿using IngredientLib.Util;
-using KitchenBurritoMod;
+﻿using KitchenBurritoMod;
 using KitchenData;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
@@ -17,9 +16,9 @@ namespace BurritoMod.Customs.BurritoSharedItems
         //public override Appliance DedicatedProvider => Mod.FlourTortillaProvider; <- Swapped for ingredient lib so don't need this reference
 
 
-        public override void OnRegister(GameDataObject gameDataObject)
+        public override void OnRegister(Item gameDataObject)
         {
-            GameObject Tortilla = Prefab.GetChildFromPath("Tortilla.002");
+            GameObject Tortilla = Prefab.GetChild("Tortilla.002");
             Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Bread - Inside") };
             Tortilla.GetChild("Wrap").ApplyMaterial(mats);
 

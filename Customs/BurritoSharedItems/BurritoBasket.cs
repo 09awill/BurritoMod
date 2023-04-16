@@ -1,5 +1,4 @@
-﻿using IngredientLib.Util;
-using KitchenBurritoMod;
+﻿using KitchenBurritoMod;
 using KitchenData;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
@@ -16,12 +15,12 @@ namespace BurritoMod.Customs.BurritoSharedItems
         public override Appliance DedicatedProvider => Mod.BurritoBasketProvider;
 
 
-        public override void OnRegister(GameDataObject gameDataObject)
+        public override void OnRegister(Item gameDataObject)
         {
             Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Tomato") };
             Prefab.GetChild("BurritoBasket").ApplyMaterial(mats);
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Cooked Pastry") };
-            Prefab.GetChildFromPath("BurritoBasket/Paper").ApplyMaterial(mats);
+            Prefab.GetChild("BurritoBasket/Paper").ApplyMaterial(mats);
         }
 
     }

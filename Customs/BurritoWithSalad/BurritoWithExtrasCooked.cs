@@ -1,5 +1,4 @@
-﻿using IngredientLib.Util;
-using KitchenBurritoMod;
+﻿using KitchenBurritoMod;
 using KitchenData;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
@@ -36,16 +35,16 @@ namespace BurritoMod.Customs.BurritoWithSalad
 
         //Well-done  Burger for spots on burrito
         //Bread - Inside Cooked for Main Burrito
-        public override void OnRegister(GameDataObject gameDataObject)
+        public override void OnRegister(Item gameDataObject)
         {
 
             Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Bread - Inside") };
             Prefab.GetChild("Burrito").ApplyMaterial(mats);
-            Prefab.GetChildFromPath("Burrito/Plane").ApplyMaterial(mats);
-            Prefab.GetChildFromPath("Burrito/Plane.001").ApplyMaterial(mats);
+            Prefab.GetChild("Burrito/Plane").ApplyMaterial(mats);
+            Prefab.GetChild("Burrito/Plane.001").ApplyMaterial(mats);
 
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Well-done  Burger") };
-            Prefab.GetChildFromPath("Burrito/BurritoToasted").ApplyMaterial(mats);
+            Prefab.GetChild("Burrito/BurritoToasted").ApplyMaterial(mats);
 
         }
     }

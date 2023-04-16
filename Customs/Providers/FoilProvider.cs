@@ -1,5 +1,4 @@
-﻿using IngredientLib.Util;
-using Kitchen;
+﻿using Kitchen;
 using KitchenBurritoMod;
 using KitchenData;
 using KitchenLib.Customs;
@@ -29,23 +28,23 @@ namespace BurritoMod.Customs.Providers
             new CItemHolder()
         };
 
-        public override void OnRegister(GameDataObject gameDataObject)
+        public override void OnRegister(Appliance gameDataObject)
         {
 
             Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Wood - Default") };
             Prefab.GetChild("BaseCounter").ApplyMaterial(mats);
-            Prefab.GetChildFromPath("BaseCounter/BaseCountertop").ApplyMaterial(mats);
-            Prefab.GetChildFromPath("BaseCounter/BaseCounterHandles").ApplyMaterial(mats);
+            Prefab.GetChild("BaseCounter/BaseCountertop").ApplyMaterial(mats);
+            Prefab.GetChild("BaseCounter/BaseCounterHandles").ApplyMaterial(mats);
 
             Prefab.GetChild("FoilDispenser").ApplyMaterial(mats);
-            Prefab.GetChildFromPath("FoilDispenser/Plane").ApplyMaterial(mats);
-            Prefab.GetChildFromPath("FoilDispenser/WoodenEnds").ApplyMaterial(mats);
-            Prefab.GetChildFromPath("FoilDispenser/WoodenEnds/WoodenEnds.001").ApplyMaterial(mats);
+            Prefab.GetChild("FoilDispenser/Plane").ApplyMaterial(mats);
+            Prefab.GetChild("FoilDispenser/WoodenEnds").ApplyMaterial(mats);
+            Prefab.GetChild("FoilDispenser/WoodenEnds/WoodenEnds.001").ApplyMaterial(mats);
 
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Metal- Shiny") };
-            Prefab.GetChildFromPath("FoilDispenser/Foil").ApplyMaterial(mats);
+            Prefab.GetChild("FoilDispenser/Foil").ApplyMaterial(mats);
 
-            var holdTransform = Prefab.GetChildFromPath("BaseCounter/HoldPoint").transform;
+            var holdTransform = Prefab.GetChild("BaseCounter/HoldPoint").transform;
             var holdPoint = Prefab.AddComponent<HoldPointContainer>();
             holdPoint.HoldPoint = holdTransform;
 

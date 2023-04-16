@@ -26,7 +26,7 @@ namespace BurritoMod.Customs.Providers
         {
             KitchenPropertiesUtils.GetUnlimitedCItemProvider(Mod.FlourTortilla.ID)
         };
-        public override void OnRegister(GameDataObject gameDataObject)
+        public override void OnRegister(Appliance gameDataObject)
         {
 
             Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Bread - Inside") };
