@@ -1,5 +1,4 @@
-﻿using IngredientLib.Util;
-using Kitchen;
+﻿using Kitchen;
 using KitchenBurritoMod;
 using KitchenData;
 using KitchenLib.Colorblind;
@@ -78,7 +77,7 @@ namespace BurritoMod.Customs.BurritoWithSalad
 
         //Well-done  Burger for spots on burrito
         //Bread - Inside Cooked for Main Burrito
-        public override void OnRegister(GameDataObject gameDataObject)
+        public override void OnRegister(ItemGroup gameDataObject)
         {
             Prefab.GetComponent<BurritoWithExtrasAssembledItemGroupView>()?.Setup(Prefab);
 
@@ -86,7 +85,7 @@ namespace BurritoMod.Customs.BurritoWithSalad
             Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Lettuce") };
             lettuce.GetChild("Salad.003").ApplyMaterial(mats);
 
-            GameObject tomato = Prefab.GetChildFromPath("Tomato/Tomato - Chopped/Tomato Sliced");
+            GameObject tomato = Prefab.GetChild("Tomato/Tomato - Chopped/Tomato Sliced");
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Tomato Flesh") };
             tomato.GetChild("Liquid").ApplyMaterial(mats);
 
@@ -96,7 +95,7 @@ namespace BurritoMod.Customs.BurritoWithSalad
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Tomato") };
             tomato.GetChild("Skin").ApplyMaterial(mats);
 
-            tomato = Prefab.GetChildFromPath("Tomato/Tomato - Chopped (1)/Tomato Sliced.001");
+            tomato = Prefab.GetChild("Tomato/Tomato - Chopped (1)/Tomato Sliced.001");
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Tomato Flesh") };
             tomato.GetChild("Liquid.002").ApplyMaterial(mats);
 
@@ -117,7 +116,7 @@ namespace BurritoMod.Customs.BurritoWithSalad
             Chicken.GetChild("Shaving4").ApplyMaterial(mats);
 
 
-            GameObject Tortilla = Prefab.GetChildFromPath("Tortilla/Tortilla.002");
+            GameObject Tortilla = Prefab.GetChild("Tortilla/Tortilla.002");
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Bread - Inside") };
             Tortilla.GetChild("Wrap").ApplyMaterial(mats);
 

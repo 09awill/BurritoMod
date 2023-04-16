@@ -3,6 +3,7 @@ using KitchenData;
 using KitchenLib.Customs;
 using KitchenLib.References;
 using KitchenLib.Utils;
+using System.Collections.Generic;
 
 namespace BurritoMod.Customs
 {
@@ -20,17 +21,17 @@ namespace BurritoMod.Customs
 
 
         // The localization information for this process. This must be set for at least one language. 
-        public override LocalisationObject<ProcessInfo> Info
+        public override List<(Locale, ProcessInfo)> InfoList => new List<(Locale, ProcessInfo)>
         {
-            get
-            {
-                var info = new LocalisationObject<ProcessInfo>();
+            (
+                Locale.English,
+                new ProcessInfo 
+                {
+                    Name = "Wrap in Foil",
+                    Icon = "<sprite name=\"Foil_Icon-01\">"
+                }
+            )
 
-                info.Add(Locale.English, LocalisationUtils.CreateProcessInfo("Proof", "<sprite name=\"Foil_Icon-01\">"));
-                return info;
-            }
-        }
-
-
+        };
     }
 }

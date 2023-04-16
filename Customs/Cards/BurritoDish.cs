@@ -1,17 +1,13 @@
-﻿using BurritoMod.Registry;
-using IngredientLib.Util;
-using Kitchen;
-using KitchenBurritoMod;
+﻿using KitchenBurritoMod;
 using KitchenData;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
 using System.Collections.Generic;
-using Unity.Entities;
 using UnityEngine;
 
 namespace BurritoMod.Customs.Cards
 {
-    class BurritoDish : ModDish
+    class BurritoDish : CustomDish
     {
         public override string UniqueNameID => "Burrito Dish";
         public override DishType Type => DishType.Base;
@@ -70,12 +66,13 @@ namespace BurritoMod.Customs.Cards
         {
             { Locale.English, "Cook Chicken and shred, combine with tortilla, Cook rice and add to tortilla, Interact to wrap and then toast and wrap in foil. Serve in a basket!" }
         };
-        public override IDictionary<Locale, UnlockInfo> LocalisedInfo => new Dictionary<Locale, UnlockInfo>
+
+        public override List<(Locale, UnlockInfo)> InfoList => new()
         {
-            { Locale.English, LocalisationUtils.CreateUnlockInfo("Burrito", "Adds Burrito as a Main", "It means little donkey.") }
+            ( Locale.English, LocalisationUtils.CreateUnlockInfo("Burrito", "Adds Burrito as a Main", "It means little donkey.") )
         };
 
-        public override void OnRegister(GameDataObject gameDataObject)
+        public override void OnRegister(Dish gameDataObject)
         {
             //TO DO: Change to chicken
             GameObject FoilWrappedBurrito = DisplayPrefab.GetChild("FoilWrappedBurrito");

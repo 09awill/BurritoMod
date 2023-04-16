@@ -16,7 +16,7 @@ namespace BurritoMod.Customs.BurritoSharedItems
         public override Appliance DedicatedProvider => Mod.FoilProvider;
 
 
-        public override void OnRegister(GameDataObject gameDataObject)
+        public override void OnRegister(Item gameDataObject)
         {
         }
 

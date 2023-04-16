@@ -1,5 +1,4 @@
-﻿using IngredientLib.Util;
-using Kitchen;
+﻿using Kitchen;
 using KitchenBurritoMod;
 using KitchenData;
 using KitchenLib.Customs;
@@ -46,7 +45,7 @@ namespace BurritoMod.Customs.BaseBurrito
 
         //Well-done  Burger for spots on burrito
         //Bread - Inside Cooked for Main Burrito
-        public override void OnRegister(GameDataObject gameDataObject)
+        public override void OnRegister(ItemGroup gameDataObject)
         {
 
             //TO DO: Change to chicken
@@ -59,7 +58,7 @@ namespace BurritoMod.Customs.BaseBurrito
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Tomato") };
             Prefab.GetChild("BurritoBasket").ApplyMaterial(mats);
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Cooked Pastry") };
-            Prefab.GetChildFromPath("BurritoBasket/Paper").ApplyMaterial(mats);
+            Prefab.GetChild("BurritoBasket/Paper").ApplyMaterial(mats);
         }
     }
 

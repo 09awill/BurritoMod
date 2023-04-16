@@ -1,10 +1,8 @@
-﻿using IngredientLib.Util;
-using KitchenBurritoMod;
+﻿using KitchenBurritoMod;
 using KitchenData;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
 using System.Collections.Generic;
-using Unity.Entities;
 using UnityEngine;
 
 namespace BurritoMod.Customs
@@ -64,7 +62,7 @@ namespace BurritoMod.Customs
             ( Locale.English, LocalisationUtils.CreateUnlockInfo("Burrito with salad", "You have to add chopped lettuce and tomato to the burrito", "Gotta be healthy") )
         };
 
-        public override void OnRegister(GameDataObject gameDataObject)
+        public override void OnRegister(Dish gameDataObject)
         {
             //TO DO: Change to chicken
             GameObject FoilWrappedBurrito = DisplayPrefab.GetChild("FoilWrappedBurrito");
@@ -81,7 +79,7 @@ namespace BurritoMod.Customs
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Tomato") };
             DisplayPrefab.GetChild("BurritoBasket").ApplyMaterial(mats);
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Cooked Pastry") };
-            DisplayPrefab.GetChildFromPath("BurritoBasket/Paper").ApplyMaterial(mats);
+            DisplayPrefab.GetChild("BurritoBasket/Paper").ApplyMaterial(mats);
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using IngredientLib.Util;
-using Kitchen;
+﻿using Kitchen;
 using KitchenBurritoMod;
 using KitchenData;
 using KitchenLib.Colorblind;
@@ -7,7 +6,6 @@ using KitchenLib.Customs;
 using KitchenLib.Utils;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 using static KitchenData.ItemGroup;
 
 namespace BurritoMod.Customs.BaseBurrito
@@ -62,7 +60,7 @@ namespace BurritoMod.Customs.BaseBurrito
 
         //Well-done  Burger for spots on burrito
         //Bread - Inside Cooked for Main Burrito
-        public override void OnRegister(GameDataObject gameDataObject)
+        public override void OnRegister(ItemGroup gameDataObject)
         {
             Prefab.GetComponent<BaseBurritoAssembledItemGroupView>()?.Setup(Prefab);
 
@@ -77,7 +75,7 @@ namespace BurritoMod.Customs.BaseBurrito
             Chicken.GetChild("Shaving4").ApplyMaterial(mats);
 
 
-            GameObject Tortilla = Prefab.GetChildFromPath("Tortilla/Tortilla.002");
+            GameObject Tortilla = Prefab.GetChild("Tortilla/Tortilla.002");
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Bread - Inside") };
             Tortilla.GetChild("Wrap").ApplyMaterial(mats);
 
