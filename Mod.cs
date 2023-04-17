@@ -6,6 +6,8 @@ using BurritoMod.Customs.BurritoSharedItems;
 using BurritoMod.Customs.BurritoWithSalad;
 using BurritoMod.Customs.Cards;
 using BurritoMod.Customs.Providers;
+using IngredientLib.Ingredient.Items;
+using IngredientLib.Ingredient.Providers;
 using Kitchen;
 using KitchenData;
 using KitchenLib;
@@ -14,6 +16,7 @@ using KitchenLib.Event;
 using KitchenLib.References;
 using KitchenLib.Utils;
 using KitchenMods;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using TMPro;
@@ -78,6 +81,8 @@ namespace KitchenBurritoMod
         internal static ItemGroup BeefBurritoAssembled => GetModdedGDO<ItemGroup, BeefBurritoAssembled>();
         internal static ItemGroup BeefBurritoWithExtrasAssembled => GetModdedGDO<ItemGroup, BeefBurritoWithExtrasAssembled>();
         internal static ItemGroup BurritoWithExtrasAssembled => GetModdedGDO<ItemGroup, BurritoWithExtrasAssembled>();
+        internal static Item ChoppedChickenCooked => GetModdedGDO<Item, ChoppedChickenCooked>();
+
 
         internal static Item BurritoWrapped => GetModdedGDO<Item, BurritoWrapped>();
         internal static Item BeefBurritoWrapped => GetModdedGDO<Item, BeefBurritoWrapped>();
@@ -111,6 +116,8 @@ namespace KitchenBurritoMod
         // Modded Appliances 
         internal static Appliance FoilProvider => GetModdedGDO<Appliance, FoilProvider>();
         internal static Appliance BurritoBasketProvider => GetModdedGDO<Appliance, BurritoBasketProvider>();
+        internal static Appliance ChickenProvider => GetModdedGDO<Appliance, ChickenProvider>();
+
 
         //Processes
         public static Process WrapInFoil => GetModdedGDO<Process, WrapInFoil>();
@@ -162,6 +169,11 @@ namespace KitchenBurritoMod
             AddGameDataObject<BurritoBasket>();
             AddGameDataObject<Foil>();
 
+            AddGameDataObject<ChoppedChicken>();
+            AddGameDataObject<ChoppedChickenCooked>();
+
+
+
             //Providers
             AddGameDataObject<BurritoBasketProvider>();
             AddGameDataObject<FoilProvider>();
@@ -200,7 +212,136 @@ namespace KitchenBurritoMod
             // Perform actions when game data is built
             Events.BuildGameDataEvent += delegate (object s, BuildGameDataEventArgs args)
             {
+                ItemGroup stirFryRaw = args.gamedata.Get<ItemGroup>(ItemGroupReferences.StirFryRaw);
+                GameObject rawPork = Mod.Bundle.LoadAsset<GameObject>("Pork - Chopped");
+                GameObject cookedPork = Mod.Bundle.LoadAsset<GameObject>("Pork - Chopped Cooked");
+
+                GameObject rawChicken = Mod.Bundle.LoadAsset<GameObject>("Chicken - Chopped");
+                GameObject cookedChicken = Mod.Bundle.LoadAsset<GameObject>("Chicken - Chopped Cooked");
+
+
+                rawPork.transform.parent = stirFryRaw.Prefab.GetChild("Raw").transform;
+                rawPork.transform.position = new Vector3(0, 0.05f, 0);
+                cookedPork.transform.parent = stirFryRaw.Prefab.GetChild("Cooked").transform;
+                cookedPork.transform.position = new Vector3(0, 0.05f, 0);
+                rawChicken.transform.parent = stirFryRaw.Prefab.GetChild("Raw").transform;
+                rawChicken.transform.position = new Vector3(0, 0.05f, 0);
+                cookedChicken.transform.parent = stirFryRaw.Prefab.GetChild("Cooked").transform;
+                cookedChicken.transform.position = new Vector3(0, 0.05f, 0);
+                rawPork.SetActive(false);
+                cookedPork.SetActive(false);
+                rawChicken.SetActive(false);
+                cookedChicken.SetActive(false);
+
+                ItemGroupView stirFryView = stirFryRaw.Prefab.GetComponent<ItemGroupView>();
+                Mod.LogWarning("Made it to Got Item Group View");
+
+                // Itemsets
+                Mod.LogWarning("Made it to item sets");
+                Item choppedPorkRaw = GDOUtils.GetCastedGDO<Item, ChoppedPork>();
+                Item choppedPorkCooked = GDOUtils.GetCastedGDO<Item, Bacon>();
+                Item choppedChickenRaw = GDOUtils.GetCastedGDO<Item, ChoppedChicken>();
+                Item choppedChickenCooked = GDOUtils.GetCastedGDO<Item, ChoppedChickenCooked>();
+                Mod.LogWarning("Made it to retrieved casted GDO's");
+
+                Mod.LogWarning(choppedPorkRaw);
+                Mod.LogWarning(choppedPorkCooked);
+                Mod.LogWarning(choppedChickenRaw);
+                Mod.LogWarning(choppedChickenCooked);
+                Mod.LogWarning("printed  retrieved casted GDO's");
+
+                if (stirFryRaw.DerivedSets != null)
+                {
+                    Mod.LogWarning("Derived sets were not null");
+
+                    ItemGroup.ItemSet porkSet = new ItemGroup.ItemSet()
+                    {
+                        Items = new List<Item>() { choppedPorkRaw, choppedPorkCooked },
+                        Min = 0,
+                        Max = 1,
+                        RequiresUnlock = true
+                    };
+                    Mod.LogWarning("porkSet");
+                    Mod.LogWarning(porkSet);
+
+
+                    stirFryRaw.DerivedSets.Add(porkSet);
+
+                    ItemGroup.ItemSet chickenSet = new ItemGroup.ItemSet()
+                    {
+                        Items = new List<Item>() { choppedChickenRaw, choppedChickenCooked },
+                        Min = 0,
+                        Max = 1,
+                        RequiresUnlock = true
+                    };
+                    Mod.LogWarning("chickenSet");
+                    Mod.LogWarning(chickenSet);
+
+                    stirFryRaw.DerivedSets.Add(chickenSet);
+                }
+                else Mod.LogWarning("Derived sets for stir fry was null");
+
+
+
+                Mod.LogWarning("Made it to just before component accessor");
+                foreach (Transform child in stirFryRaw.Prefab.GetChild("Raw").GetComponentInChildren<Transform>())
+                {
+                    Mod.LogWarning($"child name is : {child.gameObject.name}");
+                }
+
+                ComponentAccesserUtil.AddComponent(stirFryView, (choppedPorkRaw, stirFryRaw.Prefab.GetChild("Raw/Pork - Chopped")), (choppedPorkCooked, stirFryRaw.Prefab.GetChild("Cooked/Pork - Chopped Cooked")), (choppedChickenRaw, stirFryRaw.Prefab.GetChild("Raw/Chicken - Chopped")), (choppedChickenCooked, stirFryRaw.Prefab.GetChild("Cooked/Chicken - Chopped Cooked")));
+                //ComponentAccesserUtil.AddComponent(stirFryView, (choppedPorkCooked, stirFryRaw.Prefab.GetChild("Cooked/Pork - Chopped Cooked")));
+                //ComponentAccesserUtil.AddComponent(stirFryView, (choppedChickenRaw, stirFryRaw.Prefab.GetChild("Raw/Chicken - Chopped")));
+                //ComponentAccesserUtil.AddComponent(stirFryView, (choppedChickenCooked, stirFryRaw.Prefab.GetChild("Cooked/Chicken - Chopped Cooked")));
+
+                Item choppedPork = GDOUtils.GetCastedGDO<Item, ChoppedPork>();
+                Item chicken = GDOUtils.GetCastedGDO<Item, Chicken>();
+                
+                Mod.LogWarning("Made it to Applying processes");
+
+
+                Item.ItemProcess cookProc = new Item.ItemProcess()
+                {
+                    Process = Mod.Cook,
+                    Result = choppedPorkCooked,
+                    Duration = 4,
+                    IsBad = false,
+                    RequiresWrapper = true,
+                };
+                choppedPork.DerivedProcesses.Add(cookProc);
+
+                Item.ItemProcess chopProc = new Item.ItemProcess()
+                {
+                    Process = Mod.Chop,
+                    Result = choppedChickenRaw,
+                    Duration = 2.4f,
+                    IsBad = false,
+                };
+                chicken.DerivedProcesses.Add(chopProc);
+                Mod.LogWarning("Finished On Post Activate");
             };
+        }
+
+        internal class ComponentAccesserUtil : ItemGroupView
+        {
+            private static FieldInfo componentGroupField = ReflectionUtils.GetField<ItemGroupView>("ComponentGroups");
+
+
+            public static void AddComponent(ItemGroupView viewToAddTo, params (Item item, GameObject gameObject)[] addedGroups)
+            {
+                List<ComponentGroup> componentGroups = componentGroupField.GetValue(viewToAddTo) as List<ComponentGroup>;
+                foreach (var group in addedGroups)
+                {
+                    componentGroups.Add(new()
+                    {
+                        Item = group.item,
+                        GameObject = group.gameObject
+                    });
+                }
+                componentGroupField.SetValue(viewToAddTo, componentGroups);
+                viewToAddTo.DrawComponents = null;
+                
+            }
         }
 
         private static T1 GetModdedGDO<T1, T2>() where T1 : GameDataObject

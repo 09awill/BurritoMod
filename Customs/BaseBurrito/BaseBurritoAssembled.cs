@@ -53,7 +53,7 @@ namespace BurritoMod.Customs.BaseBurrito
                 Min = 1,
                 Items = new List<Item>()
                 {
-                    Mod.ShreddedChicken
+                    Mod.ChoppedChickenCooked
                 }
             }
         };
@@ -66,17 +66,10 @@ namespace BurritoMod.Customs.BaseBurrito
 
             //TO DO : Change to chicken
 
-            GameObject Chicken = Prefab.GetChild("Shredded Chicken");
-            Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Cooked Batter") };
-            Chicken.GetChild("Shaving0").ApplyMaterial(mats);
-            Chicken.GetChild("Shaving1").ApplyMaterial(mats);
-            Chicken.GetChild("Shaving2").ApplyMaterial(mats);
-            Chicken.GetChild("Shaving3").ApplyMaterial(mats);
-            Chicken.GetChild("Shaving4").ApplyMaterial(mats);
-
+            Prefab.ApplyMaterialToChild("Chicken - Chopped", "Cooked Batter", "Cooked Batter");
 
             GameObject Tortilla = Prefab.GetChild("Tortilla/Tortilla.002");
-            mats = new Material[] { MaterialUtils.GetExistingMaterial("Bread - Inside") };
+            Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Bread - Inside") };
             Tortilla.GetChild("Wrap").ApplyMaterial(mats);
 
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Well-done  Burger") };
@@ -106,8 +99,8 @@ namespace BurritoMod.Customs.BaseBurrito
             {
                 new()
                 {
-                    GameObject = GameObjectUtils.GetChildObject(prefab, "Shredded Chicken"),
-                    Item = Mod.ShreddedChicken
+                    GameObject = GameObjectUtils.GetChildObject(prefab, "Chicken - Chopped"),
+                    Item = Mod.ChoppedChickenCooked
                 },
                 new()
                 {
@@ -125,7 +118,7 @@ namespace BurritoMod.Customs.BaseBurrito
                 new()
                 {
                     Text = "Chi",
-                    Item = Mod.ShreddedChicken
+                    Item = Mod.ChoppedChickenCooked
                 },
                 new()
                 {

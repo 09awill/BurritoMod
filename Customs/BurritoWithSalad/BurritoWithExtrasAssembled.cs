@@ -53,7 +53,7 @@ namespace BurritoMod.Customs.BurritoWithSalad
                 Min = 1,
                 Items = new List<Item>()
                 {
-                    Mod.ShreddedChicken
+                    Mod.ChoppedChickenCooked
                 }
             },
             new ItemSet()
@@ -107,14 +107,7 @@ namespace BurritoMod.Customs.BurritoWithSalad
 
             //TO DO : Change to chicken
 
-            GameObject Chicken = Prefab.GetChild("Shredded Chicken");
-            mats = new Material[] { MaterialUtils.GetExistingMaterial("Cooked Batter") };
-            Chicken.GetChild("Shaving0").ApplyMaterial(mats);
-            Chicken.GetChild("Shaving1").ApplyMaterial(mats);
-            Chicken.GetChild("Shaving2").ApplyMaterial(mats);
-            Chicken.GetChild("Shaving3").ApplyMaterial(mats);
-            Chicken.GetChild("Shaving4").ApplyMaterial(mats);
-
+            Prefab.ApplyMaterialToChild("Chicken - Chopped", "Cooked Batter", "Cooked Batter");
 
             GameObject Tortilla = Prefab.GetChild("Tortilla/Tortilla.002");
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Bread - Inside") };
@@ -155,8 +148,8 @@ namespace BurritoMod.Customs.BurritoWithSalad
                 },
                 new()
                 {
-                    GameObject = GameObjectUtils.GetChildObject(prefab, "Shredded Chicken"),
-                    Item = Mod.ShreddedChicken
+                    GameObject = GameObjectUtils.GetChildObject(prefab, "Chicken - Chopped"),
+                    Item = Mod.ChoppedChickenCooked
                 },
                 new()
                 {
@@ -174,7 +167,7 @@ namespace BurritoMod.Customs.BurritoWithSalad
                 new()
                 {
                     Text = "Chi",
-                    Item = Mod.ShreddedChicken
+                    Item = Mod.ChoppedChickenCooked
                 },
                 new()
                 {
