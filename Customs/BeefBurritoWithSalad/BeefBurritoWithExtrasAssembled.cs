@@ -8,12 +8,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using static KitchenData.ItemGroup;
 
-namespace BurritoMod.Customs.BurritoWithSalad
+namespace BurritoMod.Customs.BeefBurritoWithSalad
 {
-    class BurritoWithExtrasAssembled : CustomItemGroup<BurritoWithExtrasAssembledItemGroupView>
+    class BeefBurritoWithExtrasAssembled : CustomItemGroup<BeefBurritoWithExtrasAssembledItemGroupView>
     {
-        public override string UniqueNameID => "BurritoWithExtrasAssembled";
-        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("TortillaWithExtrasAssembled");
+        public override string UniqueNameID => "BeefBurritoWithExtrasAssembled";
+        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("BeefTortillaWithExtrasAssembled");
         public override ItemCategory ItemCategory => ItemCategory.Generic;
         public override ItemValue ItemValue => ItemValue.Large;
 
@@ -23,7 +23,7 @@ namespace BurritoMod.Customs.BurritoWithSalad
             {
                 Duration = 1,
                 Process = Mod.Knead,
-                Result = Mod.BurritoWithExtrasCooked
+                Result = Mod.BeefBurritoWithExtrasCooked
             }
         };
         public override List<ItemSet> Sets => new List<ItemSet>()
@@ -53,7 +53,7 @@ namespace BurritoMod.Customs.BurritoWithSalad
                 Min = 1,
                 Items = new List<Item>()
                 {
-                    Mod.ShreddedChicken
+                    Mod.ChoppedBeefCooked
                 }
             },
             new ItemSet()
@@ -75,11 +75,11 @@ namespace BurritoMod.Customs.BurritoWithSalad
             },
         };
 
-        //Well-done  Burger for spots on burrito
-        //Bread - Inside Cooked for Main Burrito
+        //Well-done  Burger for spots on BeefBurrito
+        //Bread - Inside Cooked for Main BeefBurrito
         public override void OnRegister(ItemGroup gameDataObject)
         {
-            Prefab.GetComponent<BurritoWithExtrasAssembledItemGroupView>()?.Setup(Prefab);
+            Prefab.GetComponent<BeefBurritoWithExtrasAssembledItemGroupView>()?.Setup(Prefab);
 
             GameObject lettuce = Prefab.GetChild("ChoppedLettuce");
             Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Lettuce") };
@@ -107,13 +107,9 @@ namespace BurritoMod.Customs.BurritoWithSalad
 
             //TO DO : Change to chicken
 
-            GameObject Chicken = Prefab.GetChild("Shredded Chicken");
-            mats = new Material[] { MaterialUtils.GetExistingMaterial("Cooked Batter") };
-            Chicken.GetChild("Shaving0").ApplyMaterial(mats);
-            Chicken.GetChild("Shaving1").ApplyMaterial(mats);
-            Chicken.GetChild("Shaving2").ApplyMaterial(mats);
-            Chicken.GetChild("Shaving3").ApplyMaterial(mats);
-            Chicken.GetChild("Shaving4").ApplyMaterial(mats);
+            GameObject Beef = Prefab.GetChild("Meat - Chopped");
+            mats = new Material[] { MaterialUtils.GetExistingMaterial("Well-done"), MaterialUtils.GetExistingMaterial("Well-done Fat") };
+            Beef.GetChild("Meat - Chopped").ApplyMaterial(mats);
 
 
             GameObject Tortilla = Prefab.GetChild("Tortilla/Tortilla.002");
@@ -135,7 +131,7 @@ namespace BurritoMod.Customs.BurritoWithSalad
             }
         }
     }
-    public class BurritoWithExtrasAssembledItemGroupView : ItemGroupView
+    public class BeefBurritoWithExtrasAssembledItemGroupView : ItemGroupView
     {
         internal void Setup(GameObject prefab)
         {
@@ -155,8 +151,8 @@ namespace BurritoMod.Customs.BurritoWithSalad
                 },
                 new()
                 {
-                    GameObject = GameObjectUtils.GetChildObject(prefab, "Shredded Chicken"),
-                    Item = Mod.ShreddedChicken
+                    GameObject = GameObjectUtils.GetChildObject(prefab, "Meat - Chopped"),
+                    Item = Mod.ChoppedBeefCooked
                 },
                 new()
                 {
@@ -173,8 +169,8 @@ namespace BurritoMod.Customs.BurritoWithSalad
             {
                 new()
                 {
-                    Text = "Chi",
-                    Item = Mod.ShreddedChicken
+                    Text = "B",
+                    Item = Mod.ChoppedBeefCooked
                 },
                 new()
                 {

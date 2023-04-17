@@ -1,5 +1,7 @@
 ﻿using BurritoMod.Customs;
 using BurritoMod.Customs.BaseBurrito;
+using BurritoMod.Customs.BeefBurrito;
+using BurritoMod.Customs.BeefBurritoWithSalad;
 using BurritoMod.Customs.BurritoSharedItems;
 using BurritoMod.Customs.BurritoWithSalad;
 using BurritoMod.Customs.Cards;
@@ -50,6 +52,12 @@ namespace KitchenBurritoMod
 
         // Vanilla Items
         internal static Item Burnt => GetExistingGDO<Item>(ItemReferences.BurnedFood);
+        internal static Item Meat => GetExistingGDO<Item>(ItemReferences.Meat);
+
+        internal static Item ChoppedBeef => GetExistingGDO<Item>(ItemReferences.MeatChopped);
+        internal static Item ChoppedBeefCooked => GetExistingGDO<Item>(ItemReferences.MeatChoppedContainerCooked);
+
+
         internal static Item Tomato => GetExistingGDO<Item>(ItemReferences.Tomato);
         internal static Item ChoppedTomato => GetExistingGDO<Item>(ItemReferences.TomatoChopped);
         internal static Item Lettuce => GetExistingGDO<Item>(ItemReferences.Lettuce);
@@ -67,22 +75,37 @@ namespace KitchenBurritoMod
         internal static Item FlourTortilla => Find<Item>(IngredientLib.References.GetIngredient("Flour Tortillas"));
 
         internal static ItemGroup BaseBurritoAssembled => GetModdedGDO<ItemGroup, BaseBurritoAssembled>();
+        internal static ItemGroup BeefBurritoAssembled => GetModdedGDO<ItemGroup, BeefBurritoAssembled>();
+        internal static ItemGroup BeefBurritoWithExtrasAssembled => GetModdedGDO<ItemGroup, BeefBurritoWithExtrasAssembled>();
         internal static ItemGroup BurritoWithExtrasAssembled => GetModdedGDO<ItemGroup, BurritoWithExtrasAssembled>();
-        internal static Item BurritoWithExtrasWrapped => GetModdedGDO<Item, BurritoWithExtrasWrapped>();
-        internal static Item BurritoWithExtrasCooked => GetModdedGDO<Item, BurritoWithExtrasCooked>();
-        internal static Item BurritoFoilWrapped => GetModdedGDO<Item, BurritoFoilWrapped>();
-        internal static Item BurritoWithExtrasFoilWrapped => GetModdedGDO<Item, BurritoWithExtrasFoilWrapped>();
 
         internal static Item BurritoWrapped => GetModdedGDO<Item, BurritoWrapped>();
+        internal static Item BeefBurritoWrapped => GetModdedGDO<Item, BeefBurritoWrapped>();
+        internal static Item BeefBurritoWithExtrasWrapped => GetModdedGDO<Item, BeefBurritoWithExtrasWrapped>();
+        internal static Item BurritoWithExtrasWrapped => GetModdedGDO<Item, BurritoWithExtrasWrapped>();
+
         internal static Item BurritoCooked => GetModdedGDO<Item, BurritoCooked>();
+        internal static Item BeefBurritoCooked => GetModdedGDO<Item, BeefBurritoCooked>();
+        internal static Item BeefBurritoWithExtrasCooked => GetModdedGDO<Item, BeefBurritoWithExtrasCooked>();
+        internal static Item BurritoWithExtrasCooked => GetModdedGDO<Item, BurritoWithExtrasCooked>();
+
+        internal static Item BurritoFoilWrapped => GetModdedGDO<Item, BurritoFoilWrapped>();
+        internal static Item BeefBurritoFoilWrapped => GetModdedGDO<Item, BeefBurritoFoilWrapped>();
+        internal static Item BeefBurritoWithExtrasFoilWrapped => GetModdedGDO<Item, BeefBurritoWithExtrasFoilWrapped>();
+        internal static Item BurritoWithExtrasFoilWrapped => GetModdedGDO<Item, BurritoWithExtrasFoilWrapped>();
+
+        internal static Item BurritoInaBasket => GetModdedGDO<Item, BurritoInaBasket>();
+        internal static Item BeefBurritoInaBasket => GetModdedGDO<Item, BeefBurritoInaBasket>();
+        internal static Item BeefBurritoWithExtrasInaBasket => GetModdedGDO<Item, BeefBurritoWithExtrasInaBasket>();
+        internal static Item BurritoWithExtrasInaBasket => GetModdedGDO<Item, BurritoWithExtrasInaBasket>();
+
         internal static Item Foil => GetModdedGDO<Item, Foil>();
         internal static Item BurritoBasket => GetModdedGDO<Item, BurritoBasket>();
-        internal static Item BurritoWithExtrasInaBasket => GetModdedGDO<Item, BurritoWithExtrasInaBasket>();
-        internal static Item BurritoInaBasket => GetModdedGDO<Item, BurritoInaBasket>();
+
 
         // Modded Dishes
         internal static Dish BurritoDish => GetModdedGDO<Dish, BurritoDish>();
-
+        internal static Dish BeefBurritoDish => GetModdedGDO<Dish, BeefBurritoDish>();
         internal static Dish BurritoWithExtrasCard => GetModdedGDO<Dish, BurritoWithExtrasCard>();
 
         // Modded Appliances 
@@ -104,25 +127,46 @@ namespace KitchenBurritoMod
         {
             LogInfo("Attempting to register game data...");
 
-            // Dishes
+            // Dishes and Cards
             AddGameDataObject<BurritoDish>();
-            // Items
-            AddGameDataObject<BurritoFoilWrapped>();
-            AddGameDataObject<BurritoWithExtrasAssembled>();
+            AddGameDataObject<BeefBurritoDish>();
+            AddGameDataObject<BeefBurritoWithExtrasCard>();
             AddGameDataObject<BurritoWithExtrasCard>();
-            AddGameDataObject<BurritoWithExtrasCooked>();
-            AddGameDataObject<BurritoWithExtrasFoilWrapped>();
-            AddGameDataObject<BurritoWithExtrasWrapped>();
-            AddGameDataObject<BurritoCooked>();
-            AddGameDataObject<BurritoWrapped>();
+
+            // Items
             AddGameDataObject<BaseBurritoAssembled>();
+            AddGameDataObject<BeefBurritoAssembled>();
+            AddGameDataObject<BeefBurritoWithExtrasAssembled>();
+            AddGameDataObject<BurritoWithExtrasAssembled>();
+
+            AddGameDataObject<BurritoWrapped>();
+            AddGameDataObject<BeefBurritoWrapped>();
+            AddGameDataObject<BeefBurritoWithExtrasWrapped>();
+            AddGameDataObject<BurritoWithExtrasWrapped>();
+
+            AddGameDataObject<BurritoCooked>();
+            AddGameDataObject<BeefBurritoCooked>();
+            AddGameDataObject<BeefBurritoWithExtrasCooked>();
+            AddGameDataObject<BurritoWithExtrasCooked>();
+
+            AddGameDataObject<BurritoFoilWrapped>();
+            AddGameDataObject<BeefBurritoFoilWrapped>();
+            AddGameDataObject<BeefBurritoWithExtrasFoilWrapped>();
+            AddGameDataObject<BurritoWithExtrasFoilWrapped>();
+
             AddGameDataObject<BurritoInaBasket>();
+            AddGameDataObject<BeefBurritoInaBasket>();
+            AddGameDataObject<BeefBurritoWithExtrasInaBasket>();
             AddGameDataObject<BurritoWithExtrasInaBasket>();
+
             AddGameDataObject<BurritoBasket>();
             AddGameDataObject<Foil>();
 
+            //Providers
             AddGameDataObject<BurritoBasketProvider>();
             AddGameDataObject<FoilProvider>();
+
+            //Processes
             AddGameDataObject<WrapInFoil>();
             LogInfo("Done loading game data.");
         }

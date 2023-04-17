@@ -23,7 +23,7 @@ namespace BurritoMod.Customs.BaseBurrito
             {
                 Duration = 1,
                 Process = Mod.Knead,
-                Result = Mod.BurritoWrapped,
+                Result = Mod.BurritoCooked,
             }
         };
         public override List<ItemSet> Sets => new List<ItemSet>()

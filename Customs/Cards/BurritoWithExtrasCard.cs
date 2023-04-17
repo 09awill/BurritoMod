@@ -20,6 +20,7 @@ namespace BurritoMod.Customs
         public override bool IsSpecificFranchiseTier => false;
         public override bool DestroyAfterModUninstall => false;
         public override bool IsUnlockable => true;
+        public override bool RequiredNoDishItem => true;
 
         public override List<Unlock> HardcodedRequirements => new()
         {
@@ -55,7 +56,7 @@ namespace BurritoMod.Customs
         //Locale.English, "Combine chopped lettuce and tomato with the unwrapped base burrito, Interact to wrap and then toast and wrap in foil"
         public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string>
         {
-            { Locale.English, "Combine chopped lettuce and tomato with the unwrapped base burrito, Interact to wrap and then toast and wrap in foil. Serve in a basket!" }
+            { Locale.English, "Combine chopped lettuce and tomato with the unwrapped base burrito, Interact to wrap and then wrap in foil. Serve in a basket!" }
         };
         public override List<(Locale, UnlockInfo)> InfoList => new()
         {
