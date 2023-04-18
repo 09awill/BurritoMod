@@ -107,7 +107,7 @@ namespace BurritoMod.Customs.BurritoWithSalad
 
             //TO DO : Change to chicken
 
-            Prefab.ApplyMaterialToChild("Chicken - Chopped", "Cooked Batter", "Cooked Batter");
+            Prefab.GetChild("Chicken - Chopped").ApplyMaterialToChild("Chicken - Chopped", "Cooked Batter", "Cooked Batter");
 
             GameObject Tortilla = Prefab.GetChild("Tortilla/Tortilla.002");
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Bread - Inside") };

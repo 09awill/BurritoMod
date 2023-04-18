@@ -65,7 +65,7 @@ namespace BurritoMod.Customs.Cards
 
         public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string>
         {
-            { Locale.English, "Cook Chicken and shred, combine with tortilla, Cook rice and add to tortilla, Interact to wrap and then wrap in foil. Serve in a basket!" }
+            { Locale.English, "Chop Chicken and stir fry with rice, combine with tortilla, Interact to wrap and then wrap in foil. Serve in a basket!" }
         };
 
         public override List<(Locale, UnlockInfo)> InfoList => new()
@@ -80,6 +80,9 @@ namespace BurritoMod.Customs.Cards
             Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Metal- Shiny") };
             FoilWrappedBurrito.ApplyMaterial(mats);
             FoilWrappedBurrito.GetChild("FoilEnds").ApplyMaterial(mats);
+            FoilWrappedBurrito.ApplyMaterialToChild("StickerChicken", "Bread - Inside Cooked");
+
+
 
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Tomato") };
             DisplayPrefab.GetChild("BurritoBasket").ApplyMaterial(mats);

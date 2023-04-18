@@ -1,4 +1,5 @@
-﻿using Kitchen;
+﻿using IngredientLib.Ingredient.Items;
+using Kitchen;
 using KitchenBurritoMod;
 using KitchenData;
 using KitchenLib.Customs;
@@ -16,7 +17,6 @@ namespace BurritoMod.Customs.BaseBurrito
         public override ItemCategory ItemCategory => ItemCategory.Generic;
         public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
         public override ItemValue ItemValue => ItemValue.Large;
-
 
         public override List<ItemSet> Sets => new List<ItemSet>()
         {
@@ -63,6 +63,9 @@ namespace BurritoMod.Customs.BaseBurrito
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Metal- Shiny") };
             FoilWrappedBurrito.ApplyMaterial(mats);
             FoilWrappedBurrito.GetChild("FoilEnds").ApplyMaterial(mats);
+
+            FoilWrappedBurrito.ApplyMaterialToChild("StickerChicken", "Bread - Inside Cooked");
+
         }
     }
 

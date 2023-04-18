@@ -17,7 +17,6 @@ namespace BurritoMod.Customs.BeefBurrito
         public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
         public override ItemValue ItemValue => ItemValue.Large;
 
-
         public override List<ItemSet> Sets => new List<ItemSet>()
         {
             new ItemSet()

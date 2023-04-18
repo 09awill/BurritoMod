@@ -35,7 +35,7 @@ namespace BurritoMod.Customs.BurritoSharedItems
 
         public override void OnRegister(Item gameDataObject)
         {
-            Prefab.ApplyMaterialToChild("Chicken - Chopped", "Pork Fat", "Pork");
+            Prefab.ApplyMaterialToChild("Chicken - Chopped", "Raw Chicken", "Raw Chicken");
         }
     }
 }

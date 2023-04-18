@@ -67,6 +67,10 @@ namespace BurritoMod.Customs.BurritoWithSalad
 
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Tomato") };
             FoilWrappedBurrito.GetChild("StickerTomato").ApplyMaterial(mats);
+
+            FoilWrappedBurrito.ApplyMaterialToChild("StickerChicken", "Bread - Inside Cooked");
+
+
         }
     }
 
