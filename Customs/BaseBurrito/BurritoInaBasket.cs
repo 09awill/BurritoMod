@@ -1,6 +1,7 @@
 ﻿using Kitchen;
 using KitchenBurritoMod;
 using KitchenData;
+using KitchenLib.Colorblind;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
 using System.Collections.Generic;
@@ -12,11 +13,11 @@ namespace BurritoMod.Customs.BaseBurrito
     class BurritoInaBasket : CustomItemGroup<BurritoInaBasketItemGroupView>
     {
         public override string UniqueNameID => "BurritoInaBasket";
-        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("BaseBurritoInBasket");
+        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("ChickenBurritoInBasket");
         public override ItemCategory ItemCategory => ItemCategory.Generic;
-        public override ItemValue ItemValue => ItemValue.Large;
-        public override bool CanContainSide => true;
+        public override ItemValue ItemValue => ItemValue.Medium;
 
+        public override bool CanContainSide => true;
 
         public override List<ItemSet> Sets => new List<ItemSet>()
         {
@@ -47,6 +48,7 @@ namespace BurritoMod.Customs.BaseBurrito
         //Bread - Inside Cooked for Main Burrito
         public override void OnRegister(ItemGroup gameDataObject)
         {
+            Prefab.GetComponent<BurritoInaBasketItemGroupView>()?.Setup(Prefab);
 
             //TO DO: Change to chicken
             GameObject FoilWrappedBurrito = Prefab.GetChild("FoilWrappedBurrito");
@@ -62,6 +64,12 @@ namespace BurritoMod.Customs.BaseBurrito
             Prefab.GetChild("BurritoBasket").ApplyMaterial(mats);
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Cooked Pastry") };
             Prefab.GetChild("BurritoBasket/Paper").ApplyMaterial(mats);
+
+            if (Prefab.TryGetComponent<ItemGroupView>(out var itemGroupView))
+            {
+                GameObject clonedColourBlind = ColorblindUtils.cloneColourBlindObjectAndAddToItem(GameDataObject as ItemGroup);
+                ColorblindUtils.setColourBlindLabelObjectOnItemGroupView(itemGroupView, clonedColourBlind);
+            }
         }
     }
 
@@ -69,6 +77,7 @@ namespace BurritoMod.Customs.BaseBurrito
     {
         internal void Setup(GameObject prefab)
         {
+            ComponentLabels.Add(new ColourBlindLabel() { Item = Mod.BurritoFoilWrapped, Text = "Chi" });
             // This tells which sub-object of the prefab corresponds to each component of the ItemGroup
             // All of these sub-objects are hidden unless the item is present
             ComponentGroups = new()

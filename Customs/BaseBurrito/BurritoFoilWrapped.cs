@@ -2,9 +2,11 @@
 using Kitchen;
 using KitchenBurritoMod;
 using KitchenData;
+using KitchenLib.Colorblind;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
 using System.Collections.Generic;
+using Unity.Entities;
 using UnityEngine;
 using static KitchenData.ItemGroup;
 
@@ -13,7 +15,7 @@ namespace BurritoMod.Customs.BaseBurrito
     class BurritoFoilWrapped : CustomItemGroup<BurritoFoilWrappedItemGroupView>
     {
         public override string UniqueNameID => "Burrito Foil Wrapped";
-        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("TortillaWrappedIcon");
+        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("ChickenBurritoFoilWrapped");
         public override ItemCategory ItemCategory => ItemCategory.Generic;
         public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
         public override ItemValue ItemValue => ItemValue.Large;
@@ -66,6 +68,11 @@ namespace BurritoMod.Customs.BaseBurrito
 
             FoilWrappedBurrito.ApplyMaterialToChild("StickerChicken", "Bread - Inside Cooked");
 
+            if (Prefab.TryGetComponent<ItemGroupView>(out var itemGroupView))
+            {
+                GameObject clonedColourBlind = ColorblindUtils.cloneColourBlindObjectAndAddToItem(GameDataObject as ItemGroup);
+                ColorblindUtils.setColourBlindLabelObjectOnItemGroupView(itemGroupView, clonedColourBlind);
+            }
         }
     }
 
@@ -73,6 +80,8 @@ namespace BurritoMod.Customs.BaseBurrito
     {
         internal void Setup(GameObject prefab)
         {
+            ComponentLabels.Add(new ColourBlindLabel() { Item = Mod.BurritoCooked, Text = "Chi" });
+
             // This tells which sub-object of the prefab corresponds to each component of the ItemGroup
             // All of these sub-objects are hidden unless the item is present
             ComponentGroups = new()

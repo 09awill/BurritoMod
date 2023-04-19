@@ -33,7 +33,7 @@ namespace KitchenBurritoMod
         // Mod Version must follow semver notation e.g. "1.2.3"
         public const string MOD_GUID = "Madvion.PlateUp.BurritoMod";
         public const string MOD_NAME = "Burrito Mod";
-        public const string MOD_VERSION = "0.1.4";
+        public const string MOD_VERSION = "0.1.5";
         public const string MOD_AUTHOR = "Madvion";
         public const string MOD_GAMEVERSION = ">=1.1.3";
         // Game version this mod is designed for in semver
@@ -136,11 +136,12 @@ namespace KitchenBurritoMod
             LogInfo("Attempting to register game data...");
 
             // Dishes and Cards
+            
             AddGameDataObject<BurritoDish>();
             AddGameDataObject<BeefBurritoDish>();
             AddGameDataObject<BeefBurritoWithExtrasCard>();
             AddGameDataObject<BurritoWithExtrasCard>();
-
+            
             // Items
             AddGameDataObject<BaseBurritoAssembled>();
             AddGameDataObject<BeefBurritoAssembled>();

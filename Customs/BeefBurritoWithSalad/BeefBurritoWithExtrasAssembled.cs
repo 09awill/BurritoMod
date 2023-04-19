@@ -13,7 +13,7 @@ namespace BurritoMod.Customs.BeefBurritoWithSalad
     class BeefBurritoWithExtrasAssembled : CustomItemGroup<BeefBurritoWithExtrasAssembledItemGroupView>
     {
         public override string UniqueNameID => "BeefBurritoWithExtrasAssembled";
-        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("BeefTortillaWithExtrasAssembled");
+        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("BeefBurritoExtrasAssembly");
         public override ItemCategory ItemCategory => ItemCategory.Generic;
         public override ItemValue ItemValue => ItemValue.Large;
 

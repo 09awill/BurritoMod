@@ -13,7 +13,7 @@ namespace BurritoMod.Customs.Cards
         public override DishType Type => DishType.Base;
         public override GameObject DisplayPrefab => Mod.Bundle.LoadAsset<GameObject>("BeefBurritoInBasketIcon");
         public override GameObject IconPrefab => DisplayPrefab;
-        public override DishCustomerChange CustomerMultiplier => DishCustomerChange.LargeDecrease;
+        public override DishCustomerChange CustomerMultiplier => DishCustomerChange.SmallDecrease;
         public override CardType CardType => CardType.Default;
         public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Large;
         public override UnlockGroup UnlockGroup => UnlockGroup.Dish;
@@ -22,9 +22,6 @@ namespace BurritoMod.Customs.Cards
         public override bool DestroyAfterModUninstall => false;
         public override bool IsUnlockable => true;
         public override bool RequiredNoDishItem => true;
-
-
-
         public override List<string> StartingNameSet => new List<string>
         {
             "Hurricane Tortilla",

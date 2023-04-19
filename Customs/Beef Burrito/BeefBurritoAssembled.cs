@@ -13,7 +13,7 @@ namespace BurritoMod.Customs.BeefBurrito
     class BeefBurritoAssembled : CustomItemGroup<BeefBurritoAssembledItemGroupView>
     {
         public override string UniqueNameID => "BeefBurritoAssembled";
-        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("BeefTortillaAssembled");
+        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("BeefBurritoAssembly");
         public override ItemCategory ItemCategory => ItemCategory.Generic;
         public override ItemValue ItemValue => ItemValue.Large;
 
@@ -120,7 +120,7 @@ namespace BurritoMod.Customs.BeefBurrito
             {
                 new()
                 {
-                    Text = "B",
+                    Text = "M",
                     Item = Mod.ChoppedBeefCooked
                 },
                 new()

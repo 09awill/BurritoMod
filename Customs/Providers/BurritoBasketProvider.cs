@@ -17,7 +17,7 @@ namespace BurritoMod.Customs.Providers
         public override ShoppingTags ShoppingTags => ShoppingTags.Cooking | ShoppingTags.Misc;
         public override List<(Locale, ApplianceInfo)> InfoList => new()
         {
-            ( Locale.English, LocalisationUtils.CreateApplianceInfo("Burrito Baskets", "Provides BurritoBaskets", new(), new()) )
+            ( Locale.English, LocalisationUtils.CreateApplianceInfo("Burrito Baskets", "Provides Burrito Baskets", new(), new()) )
         };
 
         public override List<IApplianceProperty> Properties => new List<IApplianceProperty>()

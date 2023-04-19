@@ -13,7 +13,7 @@ namespace BurritoMod.Customs.BaseBurrito
     class BaseBurritoAssembled : CustomItemGroup<BaseBurritoAssembledItemGroupView>
     {
         public override string UniqueNameID => "BurritoAssembled";
-        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("TortillaAssembled");
+        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("ChickenBurritoAssembly");
         public override ItemCategory ItemCategory => ItemCategory.Generic;
         public override ItemValue ItemValue => ItemValue.Large;
 
@@ -80,12 +80,12 @@ namespace BurritoMod.Customs.BaseBurrito
             Rice.GetChild("Cube").ApplyMaterial(mats);
             Rice.GetChild("Cylinder.001").ApplyMaterial(mats);
 
-
             if (Prefab.TryGetComponent<ItemGroupView>(out var itemGroupView))
             {
                 GameObject clonedColourBlind = ColorblindUtils.cloneColourBlindObjectAndAddToItem(GameDataObject as ItemGroup);
                 ColorblindUtils.setColourBlindLabelObjectOnItemGroupView(itemGroupView, clonedColourBlind);
             }
+
         }
     }
     public class BaseBurritoAssembledItemGroupView : ItemGroupView

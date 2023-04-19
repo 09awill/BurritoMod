@@ -1,6 +1,7 @@
 ﻿using Kitchen;
 using KitchenBurritoMod;
 using KitchenData;
+using KitchenLib.Colorblind;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
 using System.Collections.Generic;
@@ -12,10 +13,10 @@ namespace BurritoMod.Customs.BeefBurritoWithSalad
     class BeefBurritoWithExtrasInaBasket : CustomItemGroup<BeefBurritoWithExtrasInaBasketItemGroupView>
     {
         public override string UniqueNameID => "Beef Burrito With Extras In A Basket";
-        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("BeefBurritoWithExtrasInBasket");
+        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("BeefBurritoExtrasInBasket");
         public override ItemCategory ItemCategory => ItemCategory.Generic;
-        public override ItemValue ItemValue => ItemValue.Large;
         public override bool CanContainSide => true;
+        public override ItemValue ItemValue => ItemValue.MediumLarge;
 
 
         public override List<ItemSet> Sets => new List<ItemSet>()
@@ -66,6 +67,11 @@ namespace BurritoMod.Customs.BeefBurritoWithSalad
 
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Well-done") };
             FoilWrappedBurrito.GetChild("StickerBeef").ApplyMaterial(mats);
+            if (Prefab.TryGetComponent<ItemGroupView>(out var itemGroupView))
+            {
+                GameObject clonedColourBlind = ColorblindUtils.cloneColourBlindObjectAndAddToItem(GameDataObject as ItemGroup);
+                ColorblindUtils.setColourBlindLabelObjectOnItemGroupView(itemGroupView, clonedColourBlind);
+            }
         }
     }
 
@@ -73,6 +79,8 @@ namespace BurritoMod.Customs.BeefBurritoWithSalad
     {
         internal void Setup(GameObject prefab)
         {
+            ComponentLabels.Add(new ColourBlindLabel() { Item = Mod.BeefBurritoWithExtrasFoilWrapped, Text = "MS" });
+
             // This tells which sub-object of the prefab corresponds to each component of the ItemGroup
             // All of these sub-objects are hidden unless the item is present
             ComponentGroups = new()

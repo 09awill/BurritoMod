@@ -1,6 +1,7 @@
 ﻿using Kitchen;
 using KitchenBurritoMod;
 using KitchenData;
+using KitchenLib.Colorblind;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
 using System.Collections.Generic;
@@ -12,11 +13,10 @@ namespace BurritoMod.Customs.BurritoWithSalad
     class BurritoWithExtrasInaBasket : CustomItemGroup<BurritoWithExtrasInaBasketItemGroupView>
     {
         public override string UniqueNameID => "Burrito With Extras In A Basket";
-        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("BurritoWithExtrasInBasket");
+        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("ChickenBurritoExtrasInBasket");
         public override ItemCategory ItemCategory => ItemCategory.Generic;
-        public override ItemValue ItemValue => ItemValue.Large;
         public override bool CanContainSide => true;
-
+        public override ItemValue ItemValue => ItemValue.MediumLarge;
 
         public override List<ItemSet> Sets => new List<ItemSet>()
         {
@@ -67,6 +67,11 @@ namespace BurritoMod.Customs.BurritoWithSalad
             Prefab.GetChild("BurritoBasket").ApplyMaterial(mats);
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Cooked Pastry") };
             Prefab.GetChild("BurritoBasket/Paper").ApplyMaterial(mats);
+            if (Prefab.TryGetComponent<ItemGroupView>(out var itemGroupView))
+            {
+                GameObject clonedColourBlind = ColorblindUtils.cloneColourBlindObjectAndAddToItem(GameDataObject as ItemGroup);
+                ColorblindUtils.setColourBlindLabelObjectOnItemGroupView(itemGroupView, clonedColourBlind);
+            }
         }
     }
 
@@ -74,6 +79,8 @@ namespace BurritoMod.Customs.BurritoWithSalad
     {
         internal void Setup(GameObject prefab)
         {
+            ComponentLabels.Add(new ColourBlindLabel() { Item = Mod.BurritoWithExtrasFoilWrapped, Text = "ChiS" });
+
             // This tells which sub-object of the prefab corresponds to each component of the ItemGroup
             // All of these sub-objects are hidden unless the item is present
             ComponentGroups = new()
@@ -89,6 +96,7 @@ namespace BurritoMod.Customs.BurritoWithSalad
                     Item = Mod.BurritoWithExtrasFoilWrapped
                 }
             };
+            
         }
     }
 }

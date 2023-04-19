@@ -10,10 +10,11 @@ namespace BurritoMod.Customs.BeefBurritoWithSalad
     class BeefBurritoWithExtrasWrapped : CustomItem
     {
         public override string UniqueNameID => "BeefBurritoWithExtrasWrapped";
-        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("TortillaWrapped");
+        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("BeefBurritoExtrasWrapped");
         public override ItemCategory ItemCategory => ItemCategory.Generic;
         public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
         public override ItemValue ItemValue => ItemValue.Medium;
+        public override string ColourBlindTag => "MS";
 
         public override List<Item.ItemProcess> Processes => new List<Item.ItemProcess>
         {
