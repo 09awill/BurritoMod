@@ -56,11 +56,11 @@ namespace BurritoMod.Customs
         //Locale.English, "Combine chopped lettuce and tomato with the unwrapped base burrito, Interact to wrap and then toast and wrap in foil"
         public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string>
         {
-            { Locale.English, "Combine chopped lettuce and tomato with the unwrapped base burrito, Interact to wrap and then wrap in foil. Serve in a basket!" }
+            { Locale.English, "Combine chopped lettuce and tomato with the unwrapped chicken burrito, Interact to wrap and then wrap in foil. Serve in a basket!" }
         };
         public override List<(Locale, UnlockInfo)> InfoList => new()
         {
-            ( Locale.English, LocalisationUtils.CreateUnlockInfo("Burrito with salad", "You have to add chopped lettuce and tomato to the burrito", "Gotta be healthy") )
+            ( Locale.English, LocalisationUtils.CreateUnlockInfo("Chicken Burrito with salad", "You have to add chopped lettuce and tomato to the burrito", "Gotta be healthy") )
         };
 
         public override void OnRegister(Dish gameDataObject)
