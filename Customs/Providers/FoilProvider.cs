@@ -35,6 +35,12 @@ namespace BurritoMod.Customs.Providers
                 Process = Mod.Knead,                         
                 Speed = 0.75f,                                             
                 IsAutomatic = false                                       
+            },
+            new Appliance.ApplianceProcesses()
+            {
+                Process = Mod.Chop,
+                Speed = 0.75f,
+                IsAutomatic = false
             }
 
         };
