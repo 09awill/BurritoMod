@@ -24,7 +24,7 @@ namespace BurritoMod.Customs.Providers
 
         public override List<IApplianceProperty> Properties => new()
         {
-            KitchenPropertiesUtils.GetCItemProvider(Mod.Foil.ID, int.MaxValue, int.MaxValue, true, false, true, false, true, false, false),
+            KitchenPropertiesUtils.GetCItemProvider(Mod.Foil.ID, 0, 0, true, false, true, false, true, false, false),
             new CItemHolder()
         };
 
