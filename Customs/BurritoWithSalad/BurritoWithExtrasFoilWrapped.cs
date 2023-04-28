@@ -72,11 +72,6 @@ namespace BurritoMod.Customs.BurritoWithSalad
             FoilWrappedBurrito.GetChild("StickerTomato").ApplyMaterial(mats);
 
             FoilWrappedBurrito.ApplyMaterialToChild("StickerChicken", "Bread - Inside Cooked");
-            if (Prefab.TryGetComponent<ItemGroupView>(out var itemGroupView))
-            {
-                GameObject clonedColourBlind = ColorblindUtils.cloneColourBlindObjectAndAddToItem(GameDataObject as ItemGroup);
-                ColorblindUtils.setColourBlindLabelObjectOnItemGroupView(itemGroupView, clonedColourBlind);
-            }
         }
     }
 

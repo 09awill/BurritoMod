@@ -72,12 +72,6 @@ namespace BurritoMod.Customs.BeefBurritoWithSalad
 
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Well-done") };
             FoilWrappedBurrito.GetChild("StickerBeef").ApplyMaterial(mats);
-
-            if (Prefab.TryGetComponent<ItemGroupView>(out var itemGroupView))
-            {
-                GameObject clonedColourBlind = ColorblindUtils.cloneColourBlindObjectAndAddToItem(GameDataObject as ItemGroup);
-                ColorblindUtils.setColourBlindLabelObjectOnItemGroupView(itemGroupView, clonedColourBlind);
-            }
         }
     }
 

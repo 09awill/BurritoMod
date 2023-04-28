@@ -123,12 +123,6 @@ namespace BurritoMod.Customs.BeefBurritoWithSalad
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Rice") };
             Rice.GetChild("Cube").ApplyMaterial(mats);
             Rice.GetChild("Cylinder.001").ApplyMaterial(mats);
-
-            if (Prefab.TryGetComponent<ItemGroupView>(out var itemGroupView))
-            {
-                GameObject clonedColourBlind = ColorblindUtils.cloneColourBlindObjectAndAddToItem(GameDataObject as ItemGroup);
-                ColorblindUtils.setColourBlindLabelObjectOnItemGroupView(itemGroupView, clonedColourBlind);
-            }
         }
     }
     public class BeefBurritoWithExtrasAssembledItemGroupView : ItemGroupView
@@ -169,7 +163,7 @@ namespace BurritoMod.Customs.BeefBurritoWithSalad
             {
                 new()
                 {
-                    Text = "B",
+                    Text = "M",
                     Item = Mod.ChoppedBeefCooked
                 },
                 new()
