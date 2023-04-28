@@ -27,7 +27,17 @@ namespace BurritoMod.Customs.Providers
             KitchenPropertiesUtils.GetCItemProvider(Mod.Foil.ID, 0, 0, true, false, true, false, true, false, false),
             new CItemHolder()
         };
+        public override List<Appliance.ApplianceProcesses> Processes => new List<Appliance.ApplianceProcesses>()
+        {
 
+            new Appliance.ApplianceProcesses()
+            {
+                Process = Mod.Knead,                         
+                Speed = 0.75f,                                             
+                IsAutomatic = false                                       
+            }
+
+        };
         public override void OnRegister(Appliance gameDataObject)
         {
 
