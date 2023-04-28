@@ -67,12 +67,7 @@ namespace BurritoMod.Customs.BurritoWithSalad
             Prefab.GetChild("BurritoBasket").ApplyMaterial(mats);
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Cooked Pastry") };
             Prefab.GetChild("BurritoBasket/Paper").ApplyMaterial(mats);
-            if (Prefab.TryGetComponent<ItemGroupView>(out var itemGroupView))
-            {
-                GameObject clonedColourBlind = ColorblindUtils.cloneColourBlindObjectAndAddToItem(GameDataObject as ItemGroup);
-                ColorblindUtils.setColourBlindLabelObjectOnItemGroupView(itemGroupView, clonedColourBlind);
-            }
-        }
+        }   
     }
 
     public class BurritoWithExtrasInaBasketItemGroupView : ItemGroupView
