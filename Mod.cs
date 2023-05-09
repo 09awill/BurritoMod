@@ -208,7 +208,6 @@ namespace KitchenBurritoMod
 
             // Register custom GDOs
             AddGameData();
-
             //AudioUtils.AddProcessAudioClip(WrapInFoil.ID, AudioUtils.GetProcessAudioClip(GetExistingGDO<Process>(ProcessReferences.Cook).ID));
 
             // Perform actions when game data is built
@@ -241,28 +240,17 @@ namespace KitchenBurritoMod
                 cookedChicken.SetActive(false);
 
                 ItemGroupView stirFryView = stirFryRaw.Prefab.GetComponent<ItemGroupView>();
-                Mod.LogWarning("Made it to Got Item Group View");
-
+                
                 // Itemsets
-                Mod.LogWarning("Made it to item sets");
                 Item choppedPorkRaw = GDOUtils.GetCastedGDO<Item, ChoppedPork>();
                 Item choppedPorkCooked = GDOUtils.GetCastedGDO<Item, ChoppedPorkWokCooked>();
                 Item bac = GDOUtils.GetCastedGDO<Item, Bacon>();
 
                 Item choppedChickenRaw = GDOUtils.GetCastedGDO<Item, ChoppedChicken>();
                 Item choppedChickenCooked = GDOUtils.GetCastedGDO<Item, ChoppedChickenCooked>();
-                Mod.LogWarning("Made it to retrieved casted GDO's");
-
-                Mod.LogWarning(choppedPorkRaw);
-                Mod.LogWarning(choppedPorkCooked);
-                Mod.LogWarning(choppedChickenRaw);
-                Mod.LogWarning(choppedChickenCooked);
-                Mod.LogWarning("printed  retrieved casted GDO's");
 
                 if (stirFryRaw.DerivedSets != null)
                 {
-                    Mod.LogWarning("Derived sets were not null");
-
                     ItemGroup.ItemSet porkSet = new ItemGroup.ItemSet()
                     {
                         Items = new List<Item>() { choppedPorkRaw, choppedPorkCooked },
@@ -270,9 +258,6 @@ namespace KitchenBurritoMod
                         Max = 1,
                         RequiresUnlock = true
                     };
-                    Mod.LogWarning("porkSet");
-                    Mod.LogWarning(porkSet);
-
 
                     stirFryRaw.DerivedSets.Add(porkSet);
 
@@ -283,20 +268,9 @@ namespace KitchenBurritoMod
                         Max = 1,
                         RequiresUnlock = true
                     };
-                    Mod.LogWarning("chickenSet");
-                    Mod.LogWarning(chickenSet);
-
                     stirFryRaw.DerivedSets.Add(chickenSet);
                 }
-                else Mod.LogWarning("Derived sets for stir fry was null");
 
-
-
-                Mod.LogWarning("Made it to just before component accessor");
-                foreach (Transform child in stirFryRaw.Prefab.GetChild("Cooked").GetComponentInChildren<Transform>())
-                {
-                    Mod.LogWarning($"child name is : {child.gameObject.name}");
-                }
                 if (args.firstBuild)
                 {
                     ComponentAccesserUtil.AddComponent(stirFryView, (choppedPorkRaw, stirFryRaw.Prefab.GetChild("Raw/Pork - Chopped")), (choppedPorkCooked, stirFryRaw.Prefab.GetChild("Cooked/Pork - Chopped Cooked")), (bac, stirFryRaw.Prefab.GetChild("Cooked/Pork - Chopped Cooked")), (choppedChickenRaw, stirFryRaw.Prefab.GetChild("Raw/Chicken - Chopped Wok")), (choppedChickenCooked, stirFryRaw.Prefab.GetChild("Cooked/Chicken - Chopped Cooked")));
@@ -309,8 +283,6 @@ namespace KitchenBurritoMod
                 Item choppedPork = GDOUtils.GetCastedGDO<Item, ChoppedPork>();
                 Item chicken = GDOUtils.GetCastedGDO<Item, Chicken>();
                 
-                Mod.LogWarning("Made it to Applying processes");
-
                 /* Can't add second process
                 Item.ItemProcess cookProc = new Item.ItemProcess()
                 {
@@ -330,7 +302,6 @@ namespace KitchenBurritoMod
                     IsBad = false,
                 };
                 chicken.DerivedProcesses.Add(chopProc);
-                Mod.LogWarning("Finished On Post Activate");
             };
         }
 
