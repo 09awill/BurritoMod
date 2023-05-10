@@ -26,7 +26,6 @@ namespace BurritoMod.Customs.BaseBurrito
             {
                 Max = 1,
                 Min = 1,
-                IsMandatory= true,
                 Items = new List<Item>()
                 {
                     Mod.BurritoFoilWrapped
