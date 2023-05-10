@@ -6,6 +6,7 @@ using KitchenLib.Customs;
 using KitchenLib.Utils;
 using System.Collections.Generic;
 using UnityEngine;
+using static Kitchen.ItemGroupView;
 using static KitchenData.ItemGroup;
 
 namespace BurritoMod.Customs.BeefBurrito
@@ -40,6 +41,11 @@ namespace BurritoMod.Customs.BeefBurrito
                     Mod.Foil,
                 }
             }
+        };
+
+        public override List<ItemGroupView.ColourBlindLabel> Labels => new List<ItemGroupView.ColourBlindLabel>()
+        {
+            new ColourBlindLabel() { Item = Mod.BeefBurritoCooked, Text = "M" }
         };
 
         //Well-done  Burger for spots on burrito

@@ -67,7 +67,7 @@ namespace BurritoMod.Customs.Cards
 
         public override List<(Locale, UnlockInfo)> InfoList => new()
         {
-            ( Locale.English, LocalisationUtils.CreateUnlockInfo("Beef Burrito", "Adds Beef Burrito as a Main", "It means little donkey.") )
+            ( Locale.English, LocalisationUtils.CreateUnlockInfo("Beef Burrito", "Adds Beef Burrito as a Base Dish", "It means little donkey.") )
         };
 
         public override void OnRegister(Dish gameDataObject)

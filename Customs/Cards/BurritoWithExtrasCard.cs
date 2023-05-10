@@ -60,7 +60,7 @@ namespace BurritoMod.Customs
         };
         public override List<(Locale, UnlockInfo)> InfoList => new()
         {
-            ( Locale.English, LocalisationUtils.CreateUnlockInfo("Chicken Burrito with salad", "You have to add chopped lettuce and tomato to the burrito", "Gotta be healthy") )
+            ( Locale.English, LocalisationUtils.CreateUnlockInfo("Chicken Burrito with salad", "You have to add chopped lettuce and tomato to the base chicken burrito", "Gotta be healthy") )
         };
 
         public override void OnRegister(Dish gameDataObject)

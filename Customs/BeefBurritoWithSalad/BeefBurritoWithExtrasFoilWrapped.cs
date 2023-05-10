@@ -7,6 +7,7 @@ using KitchenLib.Customs;
 using KitchenLib.Utils;
 using System.Collections.Generic;
 using UnityEngine;
+using static Kitchen.ItemGroupView;
 using static KitchenData.ItemGroup;
 
 namespace BurritoMod.Customs.BeefBurritoWithSalad
@@ -42,7 +43,10 @@ namespace BurritoMod.Customs.BeefBurritoWithSalad
                 }
             }
         };
-
+        public override List<ItemGroupView.ColourBlindLabel> Labels => new List<ItemGroupView.ColourBlindLabel>()
+        {
+            new ColourBlindLabel() { Item = Mod.BeefBurritoWithExtrasCooked, Text = "MS" }
+        };
 
         //Well-done  Burger for spots on burrito
         //Bread - Inside Cooked for Main Burrito

@@ -4,6 +4,7 @@ using KitchenData;
 using KitchenLib.Colorblind;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
+using SwimingSushi.Customs;
 using System.Collections.Generic;
 using UnityEngine;
 using static KitchenData.ItemGroup;
@@ -57,6 +58,24 @@ namespace BurritoMod.Customs.BaseBurrito
                 }
             }
         };
+        public override List<ItemGroupView.ColourBlindLabel> Labels => new List<ItemGroupView.ColourBlindLabel>()
+        {
+                new()
+                {
+                    Text = "Chi",
+                    Item = Mod.ChoppedChickenCooked
+                },
+                new()
+                {
+                    Text = "T",
+                    Item = Mod.FlourTortilla
+                },
+                new()
+                {
+                    Text = "R",
+                    Item = Mod.CookedRice
+                }
+        };
 
         //Well-done  Burger for spots on burrito
         //Bread - Inside Cooked for Main Burrito
@@ -103,24 +122,6 @@ namespace BurritoMod.Customs.BaseBurrito
                 new()
                 {
                     GameObject = GameObjectUtils.GetChildObject(prefab, "Rice"),
-                    Item = Mod.CookedRice
-                }
-            };
-            ComponentLabels = new()
-            {
-                new()
-                {
-                    Text = "Chi",
-                    Item = Mod.ChoppedChickenCooked
-                },
-                new()
-                {
-                    Text = "T",
-                    Item = Mod.FlourTortilla
-                },
-                new()
-                {
-                    Text = "R",
                     Item = Mod.CookedRice
                 }
             };

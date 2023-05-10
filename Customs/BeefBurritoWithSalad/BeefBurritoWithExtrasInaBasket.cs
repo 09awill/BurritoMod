@@ -6,6 +6,7 @@ using KitchenLib.Customs;
 using KitchenLib.Utils;
 using System.Collections.Generic;
 using UnityEngine;
+using static Kitchen.ItemGroupView;
 using static KitchenData.ItemGroup;
 
 namespace BurritoMod.Customs.BeefBurritoWithSalad
@@ -43,6 +44,11 @@ namespace BurritoMod.Customs.BeefBurritoWithSalad
             }
         };
 
+        public override List<ItemGroupView.ColourBlindLabel> Labels => new List<ItemGroupView.ColourBlindLabel>()
+        {
+            new ColourBlindLabel() { Item = Mod.BeefBurritoWithExtrasFoilWrapped, Text = "MS" }
+        };
+
         //Well-done  Burger for spots on burrito
         //Bread - Inside Cooked for Main Burrito
         public override void OnRegister(ItemGroup gameDataObject)
@@ -74,8 +80,6 @@ namespace BurritoMod.Customs.BeefBurritoWithSalad
     {
         internal void Setup(GameObject prefab)
         {
-            ComponentLabels.Add(new ColourBlindLabel() { Item = Mod.BeefBurritoWithExtrasFoilWrapped, Text = "MS" });
-
             // This tells which sub-object of the prefab corresponds to each component of the ItemGroup
             // All of these sub-objects are hidden unless the item is present
             ComponentGroups = new()

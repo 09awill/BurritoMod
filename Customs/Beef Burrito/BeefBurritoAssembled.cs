@@ -58,6 +58,25 @@ namespace BurritoMod.Customs.BeefBurrito
             }
         };
 
+        public override List<ItemGroupView.ColourBlindLabel> Labels => new List<ItemGroupView.ColourBlindLabel>()
+        {
+                new()
+                {
+                    Text = "M",
+                    Item = Mod.ChoppedBeefCooked
+                },
+                new()
+                {
+                    Text = "T",
+                    Item = Mod.FlourTortilla
+                },
+                new()
+                {
+                    Text = "R",
+                    Item = Mod.CookedRice
+                }
+        };
+
         //Well-done  Burger for spots on burrito
         //Bread - Inside Cooked for Main Burrito
         public override void OnRegister(ItemGroup gameDataObject)
@@ -106,24 +125,6 @@ namespace BurritoMod.Customs.BeefBurrito
                 new()
                 {
                     GameObject = GameObjectUtils.GetChildObject(prefab, "Rice"),
-                    Item = Mod.CookedRice
-                }
-            };
-            ComponentLabels = new()
-            {
-                new()
-                {
-                    Text = "M",
-                    Item = Mod.ChoppedBeefCooked
-                },
-                new()
-                {
-                    Text = "T",
-                    Item = Mod.FlourTortilla
-                },
-                new()
-                {
-                    Text = "R",
                     Item = Mod.CookedRice
                 }
             };

@@ -7,11 +7,11 @@ using UnityEngine;
 
 namespace BurritoMod.Customs
 {
-    internal class BeefBurritoWithExtrasCard : CustomDish
+    internal class ChickenBurritoWithExtrasCard : CustomDish
     {
-        public override string UniqueNameID => "BeefBurritoWithExtrasCard";
+        public override string UniqueNameID => "Chicken Burrito With Extras Card";
         public override DishType Type => DishType.Main;
-        public override GameObject DisplayPrefab => Mod.Bundle.LoadAsset<GameObject>("BeefBurritoExtrasInBasketIcon");
+        public override GameObject DisplayPrefab => Mod.Bundle.LoadAsset<GameObject>("ChickenBurritoExtrasInBasket");
         public override GameObject IconPrefab => DisplayPrefab;
         public override DishCustomerChange CustomerMultiplier => DishCustomerChange.SmallDecrease;
         public override CardType CardType => CardType.Default;
@@ -24,14 +24,19 @@ namespace BurritoMod.Customs
 
         public override List<Unlock> HardcodedRequirements => new()
         {
-            Mod.BeefBurritoDish
+            Mod.ChickenBurritoCard
+        };
+        public override List<Unlock> HardcodedBlockers => new()
+        {
+            Mod.BurritoDish,
+            Mod.BurritoWithExtrasCard
         };
 
         public override List<Dish.MenuItem> ResultingMenuItems => new List<Dish.MenuItem>
         {
             new Dish.MenuItem
             {
-                Item = Mod.BeefBurritoWithExtrasInaBasket,
+                Item = Mod.BurritoWithExtrasInaBasket,
                 Phase = MenuPhase.Main,
                 Weight = 1
             }
@@ -43,7 +48,7 @@ namespace BurritoMod.Customs
             Mod.Lettuce,
             Mod.Tomato,
             Mod.Rice,
-            Mod.Meat,
+            Mod.Chicken,
             Mod.Foil,
             Mod.BurritoBasket
         };
@@ -56,11 +61,11 @@ namespace BurritoMod.Customs
         //Locale.English, "Combine chopped lettuce and tomato with the unwrapped base burrito, Interact to wrap and then toast and wrap in foil"
         public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string>
         {
-            { Locale.English, "Combine chopped lettuce and tomato with the unwrapped beef burrito, Interact to wrap and then wrap in foil. Serve in a basket!" }
+            { Locale.English, "Combine chopped lettuce and tomato with the unwrapped chicken burrito, Interact to wrap and then wrap in foil. Serve in a basket!" }
         };
         public override List<(Locale, UnlockInfo)> InfoList => new()
         {
-            ( Locale.English, LocalisationUtils.CreateUnlockInfo("Beef Burrito with salad", "You have to add chopped lettuce and tomato to the base beef burrito", "Gotta be healthy") )
+            ( Locale.English, LocalisationUtils.CreateUnlockInfo("Chicken Burrito with salad", "You have to add chopped lettuce and tomato to the chicken burrito", "Gotta be healthy") )
         };
 
         public override void OnRegister(Dish gameDataObject)
@@ -76,8 +81,9 @@ namespace BurritoMod.Customs
 
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Tomato") };
             FoilWrappedBurrito.GetChild("StickerTomato").ApplyMaterial(mats);
-            mats = new Material[] { MaterialUtils.GetExistingMaterial("Well-done") };
-            FoilWrappedBurrito.GetChild("StickerBeef").ApplyMaterial(mats);
+
+            FoilWrappedBurrito.ApplyMaterialToChild("StickerChicken", "Bread - Inside Cooked");
+
 
 
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Tomato") };

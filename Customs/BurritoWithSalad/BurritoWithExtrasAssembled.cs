@@ -1,7 +1,6 @@
 ﻿using Kitchen;
 using KitchenBurritoMod;
 using KitchenData;
-using KitchenLib.Colorblind;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
 using System.Collections.Generic;
@@ -73,6 +72,34 @@ namespace BurritoMod.Customs.BurritoWithSalad
                     Mod.ChoppedLettuce,
                 }
             },
+        };
+
+        public override List<ItemGroupView.ColourBlindLabel> Labels => new List<ItemGroupView.ColourBlindLabel>()
+        {
+                new()
+                {
+                    Text = "Chi",
+                    Item = Mod.ChoppedChickenCooked
+                },
+                new()
+                {
+                    Text = "Tor",
+                    Item = Mod.FlourTortilla
+                },
+                new()
+                {
+                    Text = "R",
+                    Item = Mod.CookedRice
+                },new()
+                {
+                    Text = "L",
+                    Item = Mod.ChoppedLettuce
+                },
+                new()
+                {
+                    Text = "Tom",
+                    Item = Mod.ChoppedTomato
+                }
         };
 
         //Well-done  Burger for spots on burrito
@@ -154,33 +181,6 @@ namespace BurritoMod.Customs.BurritoWithSalad
                 {
                     GameObject = GameObjectUtils.GetChildObject(prefab, "Rice"),
                     Item = Mod.CookedRice
-                }
-            };
-            ComponentLabels = new()
-            {
-                new()
-                {
-                    Text = "Chi",
-                    Item = Mod.ChoppedChickenCooked
-                },
-                new()
-                {
-                    Text = "Tor",
-                    Item = Mod.FlourTortilla
-                },
-                new()
-                {
-                    Text = "R",
-                    Item = Mod.CookedRice
-                },new()
-                {
-                    Text = "L",
-                    Item = Mod.ChoppedLettuce
-                },
-                new()
-                {
-                    Text = "Tom",
-                    Item = Mod.ChoppedTomato
                 }
             };
         }

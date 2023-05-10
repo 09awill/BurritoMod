@@ -113,6 +113,12 @@ namespace KitchenBurritoMod
         internal static Dish BurritoDish => GetModdedGDO<Dish, BurritoDish>();
         internal static Dish BeefBurritoDish => GetModdedGDO<Dish, BeefBurritoDish>();
         internal static Dish BurritoWithExtrasCard => GetModdedGDO<Dish, BurritoWithExtrasCard>();
+        internal static Dish BeefBurritoWithExtrasCard => GetModdedGDO<Dish, BeefBurritoWithExtrasCard>();
+
+        internal static Dish ChickenBurritoCard => GetModdedGDO<Dish, ChickenBurritoCard>();
+        internal static Dish BeefBurritoMainCard => GetModdedGDO<Dish, BeefBurritoMainCard>();
+        internal static Dish ChickenBurritoWithExtrasCard => GetModdedGDO<Dish, ChickenBurritoWithExtrasCard>();
+        internal static Dish BeefBurritoMainWithExtrasCard => GetModdedGDO<Dish, BeefBurritoMainWithExtrasCard>();
 
         // Modded Appliances 
         internal static Appliance FoilProvider => GetModdedGDO<Appliance, FoilProvider>();
@@ -139,9 +145,13 @@ namespace KitchenBurritoMod
             
             AddGameDataObject<BurritoDish>();
             AddGameDataObject<BeefBurritoDish>();
+            AddGameDataObject<ChickenBurritoCard>();
+            AddGameDataObject<BeefBurritoMainCard>();
             AddGameDataObject<BeefBurritoWithExtrasCard>();
+            AddGameDataObject<BeefBurritoMainWithExtrasCard>();
             AddGameDataObject<BurritoWithExtrasCard>();
-            
+            AddGameDataObject<ChickenBurritoWithExtrasCard>();
+
             // Items
             AddGameDataObject<BaseBurritoAssembled>();
             AddGameDataObject<BeefBurritoAssembled>();
@@ -209,7 +219,6 @@ namespace KitchenBurritoMod
             // Register custom GDOs
             AddGameData();
             //AudioUtils.AddProcessAudioClip(WrapInFoil.ID, AudioUtils.GetProcessAudioClip(GetExistingGDO<Process>(ProcessReferences.Cook).ID));
-
             // Perform actions when game data is built
             Events.BuildGameDataEvent += delegate (object s, BuildGameDataEventArgs args)
             {

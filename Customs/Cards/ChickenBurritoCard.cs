@@ -5,19 +5,20 @@ using KitchenLib.Utils;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace BurritoMod.Customs
+namespace BurritoMod.Customs.Cards
 {
-    internal class BeefBurritoWithExtrasCard : CustomDish
+    class ChickenBurritoCard : CustomDish
     {
-        public override string UniqueNameID => "BeefBurritoWithExtrasCard";
+        public override string UniqueNameID => "Chicken Burrito Card";
         public override DishType Type => DishType.Main;
-        public override GameObject DisplayPrefab => Mod.Bundle.LoadAsset<GameObject>("BeefBurritoExtrasInBasketIcon");
+        public override GameObject DisplayPrefab => Mod.Bundle.LoadAsset<GameObject>("ChickenBurritoInBasketIcon");
         public override GameObject IconPrefab => DisplayPrefab;
         public override DishCustomerChange CustomerMultiplier => DishCustomerChange.SmallDecrease;
         public override CardType CardType => CardType.Default;
         public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Large;
         public override UnlockGroup UnlockGroup => UnlockGroup.Dish;
         public override bool IsSpecificFranchiseTier => false;
+        public override bool IsAvailableAsLobbyOption => false;
         public override bool DestroyAfterModUninstall => false;
         public override bool IsUnlockable => true;
         public override bool RequiredNoDishItem => true;
@@ -26,12 +27,15 @@ namespace BurritoMod.Customs
         {
             Mod.BeefBurritoDish
         };
-
+        public override List<Unlock> HardcodedBlockers => new()
+        {
+            Mod.BurritoDish
+        };
         public override List<Dish.MenuItem> ResultingMenuItems => new List<Dish.MenuItem>
         {
             new Dish.MenuItem
             {
-                Item = Mod.BeefBurritoWithExtrasInaBasket,
+                Item = Mod.BurritoInaBasket,
                 Phase = MenuPhase.Main,
                 Weight = 1
             }
@@ -40,10 +44,8 @@ namespace BurritoMod.Customs
         {
             Mod.Wok,
             Mod.FlourTortilla,
-            Mod.Lettuce,
-            Mod.Tomato,
             Mod.Rice,
-            Mod.Meat,
+            Mod.Chicken,
             Mod.Foil,
             Mod.BurritoBasket
         };
@@ -51,16 +53,17 @@ namespace BurritoMod.Customs
         {
             Mod.Cook,
             Mod.Chop,
-            Mod.Knead
+            Mod.Knead,
         };
-        //Locale.English, "Combine chopped lettuce and tomato with the unwrapped base burrito, Interact to wrap and then toast and wrap in foil"
+
         public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string>
         {
-            { Locale.English, "Combine chopped lettuce and tomato with the unwrapped beef burrito, Interact to wrap and then wrap in foil. Serve in a basket!" }
+            { Locale.English, "Chop Chicken and stir fry with rice, combine with tortilla, Interact to wrap and then wrap in foil. Serve in a basket!" }
         };
+
         public override List<(Locale, UnlockInfo)> InfoList => new()
         {
-            ( Locale.English, LocalisationUtils.CreateUnlockInfo("Beef Burrito with salad", "You have to add chopped lettuce and tomato to the base beef burrito", "Gotta be healthy") )
+            ( Locale.English, LocalisationUtils.CreateUnlockInfo("Chicken Burrito", "Adds Chicken Burrito in addition to beef as a Main", "It means little donkey.") )
         };
 
         public override void OnRegister(Dish gameDataObject)
@@ -70,20 +73,15 @@ namespace BurritoMod.Customs
             Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Metal- Shiny") };
             FoilWrappedBurrito.ApplyMaterial(mats);
             FoilWrappedBurrito.GetChild("FoilEnds").ApplyMaterial(mats);
+            FoilWrappedBurrito.ApplyMaterialToChild("StickerChicken", "Bread - Inside Cooked");
 
-            mats = new Material[] { MaterialUtils.GetExistingMaterial("Lettuce") };
-            FoilWrappedBurrito.GetChild("StickerLettuce").ApplyMaterial(mats);
-
-            mats = new Material[] { MaterialUtils.GetExistingMaterial("Tomato") };
-            FoilWrappedBurrito.GetChild("StickerTomato").ApplyMaterial(mats);
-            mats = new Material[] { MaterialUtils.GetExistingMaterial("Well-done") };
-            FoilWrappedBurrito.GetChild("StickerBeef").ApplyMaterial(mats);
 
 
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Tomato") };
             DisplayPrefab.GetChild("BurritoBasket").ApplyMaterial(mats);
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Cooked Pastry") };
-            DisplayPrefab.GetChild("BurritoBasket/Paper").ApplyMaterial(mats);
+            DisplayPrefab.GetChild("BurritoBasket").GetChild("Paper").ApplyMaterial(mats);
+
         }
     }
 }

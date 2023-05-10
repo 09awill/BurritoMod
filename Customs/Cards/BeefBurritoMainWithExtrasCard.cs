@@ -7,9 +7,9 @@ using UnityEngine;
 
 namespace BurritoMod.Customs
 {
-    internal class BeefBurritoWithExtrasCard : CustomDish
+    internal class BeefBurritoMainWithExtrasCard : CustomDish
     {
-        public override string UniqueNameID => "BeefBurritoWithExtrasCard";
+        public override string UniqueNameID => "Beef Burrito MainWith Extras Card";
         public override DishType Type => DishType.Main;
         public override GameObject DisplayPrefab => Mod.Bundle.LoadAsset<GameObject>("BeefBurritoExtrasInBasketIcon");
         public override GameObject IconPrefab => DisplayPrefab;
@@ -24,9 +24,13 @@ namespace BurritoMod.Customs
 
         public override List<Unlock> HardcodedRequirements => new()
         {
-            Mod.BeefBurritoDish
+            Mod.BeefBurritoMainCard
         };
-
+        public override List<Unlock> HardcodedBlockers => new()
+        {
+            Mod.BeefBurritoDish,
+            Mod.BeefBurritoWithExtrasCard
+        };
         public override List<Dish.MenuItem> ResultingMenuItems => new List<Dish.MenuItem>
         {
             new Dish.MenuItem
@@ -60,7 +64,7 @@ namespace BurritoMod.Customs
         };
         public override List<(Locale, UnlockInfo)> InfoList => new()
         {
-            ( Locale.English, LocalisationUtils.CreateUnlockInfo("Beef Burrito with salad", "You have to add chopped lettuce and tomato to the base beef burrito", "Gotta be healthy") )
+            ( Locale.English, LocalisationUtils.CreateUnlockInfo("Beef Burrito with salad", "You have to add chopped lettuce and tomato to the beef burrito", "Gotta be healthy") )
         };
 
         public override void OnRegister(Dish gameDataObject)
