@@ -83,11 +83,6 @@ namespace BurritoMod.Customs.BurritoWithSalad
                 },
                 new()
                 {
-                    Text = "Tor",
-                    Item = Mod.FlourTortilla
-                },
-                new()
-                {
                     Text = "R",
                     Item = Mod.CookedRice
                 },new()
@@ -97,7 +92,7 @@ namespace BurritoMod.Customs.BurritoWithSalad
                 },
                 new()
                 {
-                    Text = "Tom",
+                    Text = "T",
                     Item = Mod.ChoppedTomato
                 }
         };

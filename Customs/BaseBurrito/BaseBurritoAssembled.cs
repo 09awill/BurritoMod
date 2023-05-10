@@ -67,11 +67,6 @@ namespace BurritoMod.Customs.BaseBurrito
                 },
                 new()
                 {
-                    Text = "T",
-                    Item = Mod.FlourTortilla
-                },
-                new()
-                {
                     Text = "R",
                     Item = Mod.CookedRice
                 }

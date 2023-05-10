@@ -22,6 +22,10 @@ namespace BurritoMod.Customs.Cards
         public override bool DestroyAfterModUninstall => false;
         public override bool IsUnlockable => true;
         public override bool RequiredNoDishItem => true;
+        public override List<Unlock> HardcodedBlockers => new()
+        {
+            Mod.BeefBurritoMainCard
+        };
         public override List<string> StartingNameSet => new List<string>
         {
             "Hurricane Tortilla",
