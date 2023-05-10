@@ -1,10 +1,12 @@
 ﻿using Kitchen;
 using KitchenBurritoMod;
 using KitchenData;
+using KitchenLib.Colorblind;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
 using System.Collections.Generic;
 using UnityEngine;
+using static Kitchen.ItemGroupView;
 using static KitchenData.ItemGroup;
 
 namespace BurritoMod.Customs.BurritoWithSalad
@@ -12,11 +14,10 @@ namespace BurritoMod.Customs.BurritoWithSalad
     class BurritoWithExtrasInaBasket : CustomItemGroup<BurritoWithExtrasInaBasketItemGroupView>
     {
         public override string UniqueNameID => "Burrito With Extras In A Basket";
-        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("BurritoWithExtrasInBasket");
+        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("ChickenBurritoExtrasInBasket");
         public override ItemCategory ItemCategory => ItemCategory.Generic;
-        public override ItemValue ItemValue => ItemValue.Large;
         public override bool CanContainSide => true;
-
+        public override ItemValue ItemValue => ItemValue.MediumLarge;
 
         public override List<ItemSet> Sets => new List<ItemSet>()
         {
@@ -41,6 +42,10 @@ namespace BurritoMod.Customs.BurritoWithSalad
                 }
             }
         };
+        public override List<ItemGroupView.ColourBlindLabel> Labels => new List<ItemGroupView.ColourBlindLabel>()
+        {
+            new ColourBlindLabel() { Item = Mod.BurritoWithExtrasFoilWrapped, Text = "ChiS" }
+        };
 
         //Well-done  Burger for spots on burrito
         //Bread - Inside Cooked for Main Burrito
@@ -59,11 +64,15 @@ namespace BurritoMod.Customs.BurritoWithSalad
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Tomato") };
             FoilWrappedBurrito.GetChild("StickerTomato").ApplyMaterial(mats);
 
+            FoilWrappedBurrito.ApplyMaterialToChild("StickerChicken", "Bread - Inside Cooked");
+
+
+
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Tomato") };
             Prefab.GetChild("BurritoBasket").ApplyMaterial(mats);
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Cooked Pastry") };
             Prefab.GetChild("BurritoBasket/Paper").ApplyMaterial(mats);
-        }
+        }   
     }
 
     public class BurritoWithExtrasInaBasketItemGroupView : ItemGroupView
@@ -85,6 +94,7 @@ namespace BurritoMod.Customs.BurritoWithSalad
                     Item = Mod.BurritoWithExtrasFoilWrapped
                 }
             };
+            
         }
     }
 }

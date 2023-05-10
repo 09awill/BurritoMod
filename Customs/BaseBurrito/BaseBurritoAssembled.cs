@@ -4,6 +4,7 @@ using KitchenData;
 using KitchenLib.Colorblind;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
+using SwimingSushi.Customs;
 using System.Collections.Generic;
 using UnityEngine;
 using static KitchenData.ItemGroup;
@@ -13,7 +14,7 @@ namespace BurritoMod.Customs.BaseBurrito
     class BaseBurritoAssembled : CustomItemGroup<BaseBurritoAssembledItemGroupView>
     {
         public override string UniqueNameID => "BurritoAssembled";
-        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("TortillaAssembled");
+        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("ChickenBurritoAssembly");
         public override ItemCategory ItemCategory => ItemCategory.Generic;
         public override ItemValue ItemValue => ItemValue.Large;
 
@@ -23,7 +24,7 @@ namespace BurritoMod.Customs.BaseBurrito
             {
                 Duration = 1,
                 Process = Mod.Knead,
-                Result = Mod.BurritoWrapped,
+                Result = Mod.BurritoCooked,
             }
         };
         public override List<ItemSet> Sets => new List<ItemSet>()
@@ -53,9 +54,22 @@ namespace BurritoMod.Customs.BaseBurrito
                 Min = 1,
                 Items = new List<Item>()
                 {
-                    Mod.ShreddedChicken
+                    Mod.ChoppedChickenCooked
                 }
             }
+        };
+        public override List<ItemGroupView.ColourBlindLabel> Labels => new List<ItemGroupView.ColourBlindLabel>()
+        {
+                new()
+                {
+                    Text = "Chi",
+                    Item = Mod.ChoppedChickenCooked
+                },
+                new()
+                {
+                    Text = "R",
+                    Item = Mod.CookedRice
+                }
         };
 
         //Well-done  Burger for spots on burrito
@@ -66,17 +80,10 @@ namespace BurritoMod.Customs.BaseBurrito
 
             //TO DO : Change to chicken
 
-            GameObject Chicken = Prefab.GetChild("Shredded Chicken");
-            Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Cooked Batter") };
-            Chicken.GetChild("Shaving0").ApplyMaterial(mats);
-            Chicken.GetChild("Shaving1").ApplyMaterial(mats);
-            Chicken.GetChild("Shaving2").ApplyMaterial(mats);
-            Chicken.GetChild("Shaving3").ApplyMaterial(mats);
-            Chicken.GetChild("Shaving4").ApplyMaterial(mats);
-
+            Prefab.GetChild("Chicken - Chopped").ApplyMaterialToChild("Chicken - Chopped", "Cooked Batter", "Cooked Batter");
 
             GameObject Tortilla = Prefab.GetChild("Tortilla/Tortilla.002");
-            mats = new Material[] { MaterialUtils.GetExistingMaterial("Bread - Inside") };
+            Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Bread - Inside") };
             Tortilla.GetChild("Wrap").ApplyMaterial(mats);
 
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Well-done  Burger") };
@@ -86,13 +93,6 @@ namespace BurritoMod.Customs.BaseBurrito
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Rice") };
             Rice.GetChild("Cube").ApplyMaterial(mats);
             Rice.GetChild("Cylinder.001").ApplyMaterial(mats);
-
-
-            if (Prefab.TryGetComponent<ItemGroupView>(out var itemGroupView))
-            {
-                GameObject clonedColourBlind = ColorblindUtils.cloneColourBlindObjectAndAddToItem(GameDataObject as ItemGroup);
-                ColorblindUtils.setColourBlindLabelObjectOnItemGroupView(itemGroupView, clonedColourBlind);
-            }
         }
     }
     public class BaseBurritoAssembledItemGroupView : ItemGroupView
@@ -106,8 +106,8 @@ namespace BurritoMod.Customs.BaseBurrito
             {
                 new()
                 {
-                    GameObject = GameObjectUtils.GetChildObject(prefab, "Shredded Chicken"),
-                    Item = Mod.ShreddedChicken
+                    GameObject = GameObjectUtils.GetChildObject(prefab, "Chicken - Chopped"),
+                    Item = Mod.ChoppedChickenCooked
                 },
                 new()
                 {
@@ -117,24 +117,6 @@ namespace BurritoMod.Customs.BaseBurrito
                 new()
                 {
                     GameObject = GameObjectUtils.GetChildObject(prefab, "Rice"),
-                    Item = Mod.CookedRice
-                }
-            };
-            ComponentLabels = new()
-            {
-                new()
-                {
-                    Text = "Chi",
-                    Item = Mod.ShreddedChicken
-                },
-                new()
-                {
-                    Text = "T",
-                    Item = Mod.FlourTortilla
-                },
-                new()
-                {
-                    Text = "R",
                     Item = Mod.CookedRice
                 }
             };

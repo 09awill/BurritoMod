@@ -1,10 +1,14 @@
-﻿using Kitchen;
+﻿using IngredientLib.Ingredient.Items;
+using Kitchen;
 using KitchenBurritoMod;
 using KitchenData;
+using KitchenLib.Colorblind;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
 using System.Collections.Generic;
+using Unity.Entities;
 using UnityEngine;
+using static Kitchen.ItemGroupView;
 using static KitchenData.ItemGroup;
 
 namespace BurritoMod.Customs.BaseBurrito
@@ -12,11 +16,10 @@ namespace BurritoMod.Customs.BaseBurrito
     class BurritoFoilWrapped : CustomItemGroup<BurritoFoilWrappedItemGroupView>
     {
         public override string UniqueNameID => "Burrito Foil Wrapped";
-        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("TortillaWrappedIcon");
+        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("ChickenBurritoFoilWrapped");
         public override ItemCategory ItemCategory => ItemCategory.Generic;
         public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
         public override ItemValue ItemValue => ItemValue.Large;
-
 
         public override List<ItemSet> Sets => new List<ItemSet>()
         {
@@ -41,6 +44,10 @@ namespace BurritoMod.Customs.BaseBurrito
                 }
             }
         };
+        public override List<ItemGroupView.ColourBlindLabel> Labels => new List<ItemGroupView.ColourBlindLabel>()
+        {
+            new ColourBlindLabel() { Item = Mod.BurritoCooked, Text = "Chi" }
+        };
 
         //Well-done  Burger for spots on burrito
         //Bread - Inside Cooked for Main Burrito
@@ -63,6 +70,8 @@ namespace BurritoMod.Customs.BaseBurrito
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Metal- Shiny") };
             FoilWrappedBurrito.ApplyMaterial(mats);
             FoilWrappedBurrito.GetChild("FoilEnds").ApplyMaterial(mats);
+
+            FoilWrappedBurrito.ApplyMaterialToChild("StickerChicken", "Bread - Inside Cooked");
         }
     }
 

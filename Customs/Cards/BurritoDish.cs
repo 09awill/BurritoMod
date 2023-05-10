@@ -11,9 +11,9 @@ namespace BurritoMod.Customs.Cards
     {
         public override string UniqueNameID => "Burrito Dish";
         public override DishType Type => DishType.Base;
-        public override GameObject DisplayPrefab => Mod.Bundle.LoadAsset<GameObject>("BaseBurritoInBasketIcon");
+        public override GameObject DisplayPrefab => Mod.Bundle.LoadAsset<GameObject>("ChickenBurritoInBasketIcon");
         public override GameObject IconPrefab => DisplayPrefab;
-        public override DishCustomerChange CustomerMultiplier => DishCustomerChange.LargeDecrease;
+        public override DishCustomerChange CustomerMultiplier => DishCustomerChange.SmallDecrease;
         public override CardType CardType => CardType.Default;
         public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Large;
         public override UnlockGroup UnlockGroup => UnlockGroup.Dish;
@@ -21,8 +21,12 @@ namespace BurritoMod.Customs.Cards
         public override bool IsAvailableAsLobbyOption => true;
         public override bool DestroyAfterModUninstall => false;
         public override bool IsUnlockable => true;
+        public override bool RequiredNoDishItem => true;
 
-
+        public override List<Unlock> HardcodedBlockers => new()
+        {
+            Mod.ChickenBurritoCard
+        };
 
         public override List<string> StartingNameSet => new List<string>
         {
@@ -64,12 +68,12 @@ namespace BurritoMod.Customs.Cards
 
         public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string>
         {
-            { Locale.English, "Cook Chicken and shred, combine with tortilla, Cook rice and add to tortilla, Interact to wrap and then toast and wrap in foil. Serve in a basket!" }
+            { Locale.English, "Chop Chicken and stir fry with rice, combine with tortilla, Interact to wrap and then wrap in foil. Serve in a basket!" }
         };
 
         public override List<(Locale, UnlockInfo)> InfoList => new()
         {
-            ( Locale.English, LocalisationUtils.CreateUnlockInfo("Burrito", "Adds Burrito as a Main", "It means little donkey.") )
+            ( Locale.English, LocalisationUtils.CreateUnlockInfo("Chicken Burrito", "Adds Chicken Burrito as a Base Dish", "It means little donkey.") )
         };
 
         public override void OnRegister(Dish gameDataObject)
@@ -79,6 +83,9 @@ namespace BurritoMod.Customs.Cards
             Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Metal- Shiny") };
             FoilWrappedBurrito.ApplyMaterial(mats);
             FoilWrappedBurrito.GetChild("FoilEnds").ApplyMaterial(mats);
+            FoilWrappedBurrito.ApplyMaterialToChild("StickerChicken", "Bread - Inside Cooked");
+
+
 
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Tomato") };
             DisplayPrefab.GetChild("BurritoBasket").ApplyMaterial(mats);

@@ -1,10 +1,13 @@
-﻿using Kitchen;
+﻿using BurritoMod.Customs.BeefBurritoWithSalad;
+using Kitchen;
 using KitchenBurritoMod;
 using KitchenData;
+using KitchenLib.Colorblind;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
 using System.Collections.Generic;
 using UnityEngine;
+using static Kitchen.ItemGroupView;
 using static KitchenData.ItemGroup;
 
 namespace BurritoMod.Customs.BurritoWithSalad
@@ -12,7 +15,7 @@ namespace BurritoMod.Customs.BurritoWithSalad
     class BurritoWithExtrasFoilWrapped : CustomItemGroup<BurritoWithExtrasFoilWrappedItemGroupView>
     {
         public override string UniqueNameID => "Burrito With Extras Foil Wrapped";
-        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("TortillaWrappedIconWithExtras");
+        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("ChickenBurritoExtrasFoilWrapped");
         public override ItemCategory ItemCategory => ItemCategory.Generic;
         public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
         public override ItemValue ItemValue => ItemValue.Large;
@@ -41,12 +44,16 @@ namespace BurritoMod.Customs.BurritoWithSalad
                 }
             }
         };
-
+        public override List<ItemGroupView.ColourBlindLabel> Labels => new List<ItemGroupView.ColourBlindLabel>()
+        {
+            new ColourBlindLabel() { Item = Mod.BurritoWithExtrasCooked, Text = "ChiS" }
+        };
 
         //Well-done  Burger for spots on burrito
         //Bread - Inside Cooked for Main Burrito
         public override void OnRegister(ItemGroup gameDataObject)
         {
+            Prefab.GetComponent<BurritoWithExtrasFoilWrappedItemGroupView>()?.Setup(Prefab);
 
             Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Bread - Inside") };
             Prefab.GetChild("Burrito").ApplyMaterial(mats);
@@ -67,6 +74,8 @@ namespace BurritoMod.Customs.BurritoWithSalad
 
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Tomato") };
             FoilWrappedBurrito.GetChild("StickerTomato").ApplyMaterial(mats);
+
+            FoilWrappedBurrito.ApplyMaterialToChild("StickerChicken", "Bread - Inside Cooked");
         }
     }
 
@@ -81,7 +90,7 @@ namespace BurritoMod.Customs.BurritoWithSalad
                 new()
                 {
                     GameObject = GameObjectUtils.GetChildObject(prefab, "Burrito"),
-                    Item = Mod.BurritoCooked
+                    Item = Mod.BurritoWithExtrasCooked
                 },
                 new()
                 {
@@ -89,6 +98,7 @@ namespace BurritoMod.Customs.BurritoWithSalad
                     Item = Mod.Foil
                 }
             };
+            
         }
 
     }

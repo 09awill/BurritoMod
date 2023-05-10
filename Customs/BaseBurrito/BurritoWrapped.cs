@@ -1,5 +1,7 @@
-﻿using KitchenBurritoMod;
+﻿using Kitchen;
+using KitchenBurritoMod;
 using KitchenData;
+using KitchenLib.Colorblind;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
 using System.Collections.Generic;
@@ -10,10 +12,12 @@ namespace BurritoMod.Customs.BaseBurrito
     class BurritoWrapped : CustomItem
     {
         public override string UniqueNameID => "BurritoWrapped";
-        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("TortillaWrapped");
+        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("ChickenBurritoWrapped");
         public override ItemCategory ItemCategory => ItemCategory.Generic;
         public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
         public override ItemValue ItemValue => ItemValue.Large;
+        public override string ColourBlindTag => "Chi";
+
         public override List<Item.ItemProcess> Processes => new List<Item.ItemProcess>
         {
             new Item.ItemProcess

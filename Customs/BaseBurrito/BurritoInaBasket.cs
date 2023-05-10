@@ -1,10 +1,12 @@
 ﻿using Kitchen;
 using KitchenBurritoMod;
 using KitchenData;
+using KitchenLib.Colorblind;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
 using System.Collections.Generic;
 using UnityEngine;
+using static Kitchen.ItemGroupView;
 using static KitchenData.ItemGroup;
 
 namespace BurritoMod.Customs.BaseBurrito
@@ -12,11 +14,11 @@ namespace BurritoMod.Customs.BaseBurrito
     class BurritoInaBasket : CustomItemGroup<BurritoInaBasketItemGroupView>
     {
         public override string UniqueNameID => "BurritoInaBasket";
-        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("BaseBurritoInBasket");
+        public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("ChickenBurritoInBasket");
         public override ItemCategory ItemCategory => ItemCategory.Generic;
-        public override ItemValue ItemValue => ItemValue.Large;
-        public override bool CanContainSide => true;
+        public override ItemValue ItemValue => ItemValue.Medium;
 
+        public override bool CanContainSide => true;
 
         public override List<ItemSet> Sets => new List<ItemSet>()
         {
@@ -42,17 +44,24 @@ namespace BurritoMod.Customs.BaseBurrito
             }
         };
 
-
+        public override List<ItemGroupView.ColourBlindLabel> Labels => new List<ItemGroupView.ColourBlindLabel>()
+        {
+            new ColourBlindLabel() { Item = Mod.BurritoFoilWrapped, Text = "Chi" }
+        };
         //Well-done  Burger for spots on burrito
         //Bread - Inside Cooked for Main Burrito
         public override void OnRegister(ItemGroup gameDataObject)
         {
+            Prefab.GetComponent<BurritoInaBasketItemGroupView>()?.Setup(Prefab);
 
             //TO DO: Change to chicken
             GameObject FoilWrappedBurrito = Prefab.GetChild("FoilWrappedBurrito");
             Material[] mats = new Material[] { MaterialUtils.GetExistingMaterial("Metal- Shiny") };
             FoilWrappedBurrito.ApplyMaterial(mats);
             FoilWrappedBurrito.GetChild("FoilEnds").ApplyMaterial(mats);
+            FoilWrappedBurrito.ApplyMaterialToChild("StickerChicken", "Bread - Inside Cooked");
+
+
 
 
             mats = new Material[] { MaterialUtils.GetExistingMaterial("Tomato") };
