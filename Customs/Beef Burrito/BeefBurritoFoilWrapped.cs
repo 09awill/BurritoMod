@@ -79,7 +79,6 @@ namespace BurritoMod.Customs.BeefBurrito
     {
         internal void Setup(GameObject prefab)
         {
-            ComponentLabels.Add(new ColourBlindLabel() { Item = Mod.BeefBurritoCooked, Text = "M" });
             // This tells which sub-object of the prefab corresponds to each component of the ItemGroup
             // All of these sub-objects are hidden unless the item is present
             ComponentGroups = new()
