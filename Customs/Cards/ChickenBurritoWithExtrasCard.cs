@@ -61,11 +61,33 @@ namespace BurritoMod.Customs
         //Locale.English, "Combine chopped lettuce and tomato with the unwrapped base burrito, Interact to wrap and then toast and wrap in foil"
         public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string>
         {
-            { Locale.English, "Combine chopped lettuce and tomato with the unwrapped chicken burrito, Interact to wrap and then wrap in foil. Serve in a basket!" }
+            { Locale.English, "Combine chopped lettuce and tomato with the unwrapped chicken burrito, Interact to wrap and then wrap in foil. Serve in a basket!" },
+            { Locale.French, "Mélangez de la laitue et des tomates hachées avec le burrito de poulet non emballé, Enroulez-le en interagissant puis enveloppez-le dans du papier d'aluminium. Servez dans un panier !" },
+            { Locale.German, "Kombiniere gehackten Salat und Tomaten mit dem ausgepackten Hähnchen-Burrito, Wickeln Sie ihn durch Interaktion ein und wickeln Sie ihn dann in Folie ein. Servieren Sie ihn in einem Korb!" },
+            { Locale.Spanish, "Combina la lechuga y el tomate picado con el burrito de pollo sin envolver, Interactúa para envolverlo y luego envuélvelo en papel de aluminio. ¡Sirve en una canasta!" },
+            { Locale.Polish, "Połącz posiekaną sałatę i pomidory z niezapakowanym burrito z kurczakiem, Zawiń za pomocą interakcji, a następnie zawijaj w folię aluminiową. Podawaj w koszyku!" },
+            { Locale.Russian,  "Сочетайте нарезанный листовой салат и помидоры с распакованным куриным буррито, Оберните его, взаимодействуя, а затем заверните в фольгу. Подавайте в корзине!" },
+            { Locale.PortugueseBrazil, "Combine alface e tomate picados com o burrito de frango desembrulhado, Interaja para enrolar e depois embrulhe em papel alumínio. Sirva em uma cesta!" },
+            { Locale.Japanese, "刻んだレタスとトマトをアンラップしたチキンブリトーと組み合わせ、インタラクトして包み、アルミホイルで包んで、バスケットに盛り付けてください！" },
+            { Locale.ChineseSimplified, "将切碎的生菜和番茄与未包装的鸡肉卷饼结合起来，通过交互包裹，然后用箔纸包裹。在篮子里上菜！" },
+            { Locale.ChineseTraditional,  "將切碎的生菜和番茄與未包裝的雞肉捲餅結合在一起，透過互動包裹，然後用錫箔紙包裹。在籃子中上菜！" },
+            { Locale.Korean, "다진 양상추와 토마토를 포함하여 포장하지 않은 치킨 부리또와 결합하여 상호작용하여 포장한 후 호일로 감싸세요. 바구니에 담아 서빙하세요!" },
+            { Locale.Turkish, "Doğranmış marul ve domatesi açılmış tavuklu burrito ile birleştirin, etkileşime girerek sarın ve sonra folyoya sarın. Bir sepet içinde servis yapın!" },
         };
         public override List<(Locale, UnlockInfo)> InfoList => new()
         {
-            ( Locale.English, LocalisationUtils.CreateUnlockInfo("Chicken Burrito with salad", "You have to add chopped lettuce and tomato to the chicken burrito", "Gotta be healthy") )
+            ( Locale.English, LocalisationUtils.CreateUnlockInfo("Chicken Burrito with salad", "You have to add chopped lettuce and tomato to the chicken burrito", "Gotta be healthy") ),
+            ( Locale.French, LocalisationUtils.CreateUnlockInfo("Burrito au poulet avec salade", "Vous devez ajouter de la laitue et des tomates hachées au burrito de poulet.", "Il faut manger sainement") ),
+            ( Locale.German, LocalisationUtils.CreateUnlockInfo("Hühnchen-Burrito mit Salat", "Sie müssen gehackten Salat und Tomaten zum Hühnchen-Burrito hinzufügen.", "Es muss gesund sein") ),
+            ( Locale.Spanish, LocalisationUtils.CreateUnlockInfo("Burrito de pollo con ensalada", "Debes agregar lechuga y tomate picado al burrito de pollo.", "Tiene que ser saludable") ),
+            ( Locale.Polish, LocalisationUtils.CreateUnlockInfo("Burrito z kurczakiem i sałatką",  "Musisz dodać posiekaną sałatę i pomidory do burrito z kurczakiem.", "Musisz jeść zdrowo") ),
+            ( Locale.Russian, LocalisationUtils.CreateUnlockInfo("Куриный буррито с салатом", "Вы должны добавить нарезанный салат и помидоры в куриный буррито.", "Нужно есть здоровую пищу") ),
+            ( Locale.PortugueseBrazil, LocalisationUtils.CreateUnlockInfo("Burrito de Frango com Salada", "Você tem que adicionar alface e tomate picado ao burrito de frango.", "Tem que ser saudável") ),
+            ( Locale.Japanese, LocalisationUtils.CreateUnlockInfo("サラダを添えたチキンブリトー", "チキンブリトーに刻んだレタスとトマトを追加する必要があります。", "健康的である必要があります") ),
+            ( Locale.ChineseSimplified, LocalisationUtils.CreateUnlockInfo("沙拉鸡肉卷", "您需要将切碎的生菜和番茄添加到鸡肉卷饼中。", "必须要健康") ),
+            ( Locale.ChineseTraditional, LocalisationUtils.CreateUnlockInfo("沙拉雞肉捲餅", "您需要將切碎的生菜和番茄添加到雞肉捲餅中。", "必須要健康") ),
+            ( Locale.Korean, LocalisationUtils.CreateUnlockInfo("샐러드가 첨가된 치킨 부리또", "닭고기 부리또에 다진 양상추와 토마토를 추가해야 합니다.", "건강해야 합니다") ),
+            ( Locale.Turkish, LocalisationUtils.CreateUnlockInfo( "Salatalı Tavuklu Burrito",  "Tavuk burritosuna doğranmış marul ve domates eklemeniz gerekiyor.", "Sağlıklı olması gerekir") ),
         };
 
         public override void OnRegister(Dish gameDataObject)
