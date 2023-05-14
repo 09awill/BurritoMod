@@ -18,7 +18,7 @@ namespace BurritoMod.Customs.Cards
         public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Large;
         public override UnlockGroup UnlockGroup => UnlockGroup.Dish;
         public override bool IsSpecificFranchiseTier => false;
-        public override bool IsAvailableAsLobbyOption => true;
+        public override bool IsAvailableAsLobbyOption => false;
         public override bool DestroyAfterModUninstall => false;
         public override bool IsUnlockable => true;
         public override bool RequiredNoDishItem => true;
@@ -28,7 +28,7 @@ namespace BurritoMod.Customs.Cards
         };
         public override List<Unlock> HardcodedRequirements => new()
         {
-            Mod.ChickenBurritoCard
+            Mod.BurritoDish
         };
 
         public override List<Dish.MenuItem> ResultingMenuItems => new List<Dish.MenuItem>
